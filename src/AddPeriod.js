@@ -7,9 +7,9 @@ export default function Attendance() {
     return (
         <div>
             <nav role="navigation">
-                <a href="#back">Back</a>
-                <a href="#index">Present</a>
-                <a href="#attendance">Home</a>
+                <Link to="/">Back</Link>
+                <Link to="/app">Present</Link>
+                <Link to="/add-period">Home</Link>
             </nav>
             <main role="main">
                 <header role="banner">
