@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 // import data from './data'
-import { Route, Link } from 'react-router-dom'
-import AddPeriod from './AddPeriod'
-import AddStudent from './AddStudent'
-import Attendance from './Attendance'
-import EditStudent from './EditStudent'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import './index.css';
+// import AddPeriod from './AddPeriod'
+// import AddStudent from './AddStudent'
+// import Attendance from './Attendance'
+// import EditStudent from './EditStudent'
 
 export default function App() {
     return (
+        <BrowserRouter>
         <div>
             <nav role="navigation">
                 <a href="#back">Back</a>
@@ -29,8 +31,10 @@ export default function App() {
             </main>
             <footer role="content-info">Copyright 2021</footer>
         </div>
+        </BrowserRouter>
     );
 }
+
 //     <main className='App'>
 //       {/* content goes here */}
 //     </main>
