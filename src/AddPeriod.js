@@ -11,13 +11,10 @@ export default function Attendance() {
                 <a href="#index">Present</a>
                 <a href="#attendance">Home</a>
             </nav>
-
             <main role="main">
                 <header role="banner">
-
                     <h2>Periods</h2>
                 </header>
-
                 <section class="results">
                     <div class="container-fluid">
                         <div class="container">
@@ -26,9 +23,6 @@ export default function Attendance() {
                                     <p class="box description">Classroom</p>
                                     <p class="box description">Period 1</p>
                                 </div>
-
-
-
                                 <section class="button-section">
                                     <span class="custom-dropdown big">
                                         <select>
@@ -40,7 +34,6 @@ export default function Attendance() {
                                             <option value='5'>5</option>
                                             <option value='6'>6</option>
                                         </select>
-
                                     </span>
                                 </section>
                                 <footer role="content-info">Copyright 2021</footer>

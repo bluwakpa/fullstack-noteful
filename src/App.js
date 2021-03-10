@@ -9,28 +9,31 @@ import './index.css';
 
 export default function App() {
     return (
+
         <BrowserRouter>
-        <div>
-            <nav role="navigation">
-                <a href="#back">Back</a>
-                <Link to="/">Present</Link>
-                <a href="#index">Present</a>
-                <Link to="/">Home</Link>
-                <a href="#attendance">Home</a>
-            </nav>
-            <main role="main">
-                <header role="banner">
-                    <h2>About</h2>
-                </header>
-                <section>
-                    <p>Take attendance of your classroom by creating student profiles for each class period.</p>
-                </section>
-                <section class="button-section">
-                    <a href="#attendance"><button>Start</button></a>
-                </section>
-            </main>
-            <footer role="content-info">Copyright 2021</footer>
-        </div>
+
+            <Link to={location => ({ ...location, pathname: "/courses" })} />
+            <Link to={location => `${location.pathname}?sort=name`} />
+
+            <div>
+                <nav role="navigation">
+                    <Link to="/">Back</Link>
+                    <Link to="/app">Present</Link>
+                    <Link to="/add-period">Home</Link>
+                </nav>
+                <main role="main">
+                    <header role="banner">
+                        <h2>About</h2>
+                    </header>
+                    <section>
+                        <p>Take attendance of your classroom by creating student profiles for each class period.</p>
+                    </section>
+                    <section class="button-section">
+                        <a href="#attendance"><button>Start</button></a>
+                    </section>
+                </main>
+                <footer role="content-info">Copyright 2021</footer>
+            </div>
         </BrowserRouter>
     );
 }
