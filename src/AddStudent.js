@@ -1,28 +1,44 @@
 import React, { useState } from 'react';
 import App from './App';
 // import data from './data'
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import Attendance from './Attendance'
+import AddPeriod from './AddPeriod'
 
-export default function Attendance() {
+export default function AddStudent() {
     return (
-        <div>
-            <nav role="navigation">
-                <Link to="/">Back</Link>
-                <Link to="/app">Present</Link>
-                <Link to="/add-period">Home</Link>
-            </nav>
-            <main role="main">
-                <header role="banner">
-                    <h2>About</h2>
-                </header>
-                <section>
-                    <p>Take attendance of your classroom by creating student profiles for each class period.</p>
-                </section>
-                <section class="button-section">
-                    <a href="#attendance"><button>Start</button></a>
-                </section>
-            </main>
-            <footer role="content-info">Copyright 2021</footer>
-        </div>
+        <main role="main">
+            <header role="banner">
+                <h2>Add Student</h2>
+            </header>
+            <section>
+                <form class='signup-form'>
+                    <div>
+                        <label for="first-name">First name</label>
+                        <input placeholder='First Name' type="text" name='first-name' id='first-name' />
+                    </div>
+                    <div>
+                        <label for="last-name">Last name</label>
+                        <input type="text" name='last-name' id='last-name' placeholder='Last Name' />
+                    </div>
+                    <section class="button-section">
+                        <span class="custom-dropdown big">
+                            <select>
+                                <option value=""> Period </option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
+                            </select>
+                            {/* <!--<input type='submit' value='submit'>--> */}
+                        </span>
+                        <button type='submit'>Add</button>
+                    </section>
+                    
+                </form>
+            </section>
+        </main>
     );
 }

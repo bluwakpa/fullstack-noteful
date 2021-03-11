@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import App from './App';
 // import data from './data'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
+import './index.css';
 import AddPeriod from './AddPeriod'
+import Attendance from './Attendance'
+import AddStudent from './AddStudent'
+import EditStudent from './EditStudent'
 
-export default function Attendance() {
+export default function App() {
     return (
         <main role="main">
             <header role="banner">
