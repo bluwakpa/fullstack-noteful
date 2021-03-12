@@ -98,3 +98,7 @@ section:nth-child(even) {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.student {
+  padding: 6% 0 0 0;
+}

@@ -14,9 +14,13 @@ export default function App() {
         <BrowserRouter>
             <div>
                 <nav role="navigation">
-                    {/* <Link to="/">Back</Link> */}
-                    <Link to="/"> Present |</Link>
-                    <Link to="/add-period">| Home </Link>
+                    <Link to="/"> Present </Link>
+                    <br />
+                    <Link to="/edit-student"> Edit |</Link>
+                    <Link to="/add-student">| Student |</Link>
+                    
+                    <Link to="/add-period">| Period |</Link>
+                    <Link to="/attendance">| Attendance </Link>
                 </nav>
 
                 <Route exact path="/" component={Home} />

@@ -11,12 +11,12 @@ export default function App() {
     return (
         <main role="main">
             <header role="banner">
-                <h2>About</h2>
+                <h2>Home</h2>
             </header>
             <section>
                 <p>Take attendance of your classroom by creating student profiles for each class period.</p>
             </section>
-            <section class="button-section">
+            <section className="button-section">
                 <Link to="/attendance"><button>Start</button></Link>
             </section>
         </main>
