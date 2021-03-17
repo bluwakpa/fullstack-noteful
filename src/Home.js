@@ -17,7 +17,7 @@ export default function App() {
                 <p>Take attendance of your classroom by creating student profiles for each class period.</p>
             </section>
             <section className="button-section">
-                <Link to="/attendance"><button>Start</button></Link>
+                <Link to="/add-period"><button> Select Period </button></Link>
             </section>
         </main>
     );

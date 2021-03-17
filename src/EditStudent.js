@@ -16,18 +16,21 @@ export default function EditStudent() {
 
                 <form className='signup-form'>
                     <div>
+                        {/* Text box defaults as students information based on id */}
                         <label for="first-name">First name</label>
                         <input placeholder='First Name' type="text" name='first-name' id='first-name' />
                     </div>
                     <div>
                         <label for="last-name">Last name</label>
-                        <input type="text" name='last-name' id='last-name' placeholder='Last Name' />
+                        <input placeholder='Last Name' type="text" name='last-name' id='last-name'  />
                     </div>
+                    {/* View student attendance in calendar */}
                     <div>
                         <article className="button-section">
                             <span className="custom-dropdown big">
                                 <select>
-                                    <option value=""> Period </option>
+                                    {/* dropdown period defaults as students information */}
+                                    <option value=""> Classroom Period </option>
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
