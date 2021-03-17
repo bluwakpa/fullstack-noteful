@@ -35,7 +35,7 @@ export default function App() {
                 <Route path="/add-period" component={AddPeriod} />
                 <Route path="/attendance/:period" component={Attendance} />
                 <Route path="/add-student" component={AddStudent} />
-                <Route path="/edit-student" component={EditStudent} />
+                <Route path="/edit-student/:id" component={EditStudent} />
 
                 <footer role="content-info">Copyright 2021</footer>
             </div>
