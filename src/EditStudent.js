@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import App from './App';
-// import data from './data'
+import data from './data'
+import ApiContext from './ApiContext';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import AddPeriod from './AddPeriod'
 import Attendance from './Attendance'
 
-export default function EditStudent() {
+export default function EditStudent(props) {
+    const student = (props.match.params.student)
+    const context = useContext(ApiContext)
+    console.log(context.students)
+    const filteredStudents = (!student)
+        ? context.students
+        : context.students.filter(student => student.id === parseInt(student))
     return (
         <main role="main">
             <header role="banner">
