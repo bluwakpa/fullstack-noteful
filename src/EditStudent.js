@@ -7,12 +7,12 @@ import AddPeriod from './AddPeriod'
 import Attendance from './Attendance'
 
 export default function EditStudent(props) {
-    const student = (props.match.params.student)
+    const student = (props.match.params.id)
     const context = useContext(ApiContext)
-    // console.log(context.students)
+    console.log(student)
     const filteredStudents = (!student)
         ? context.students
-        : context.students.filter(student => student.id === (student))
+        : context.students.find(student => student.id === (student))
     return (
         <main role="main">
             <header role="banner">
