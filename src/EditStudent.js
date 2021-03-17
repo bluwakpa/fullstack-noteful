@@ -9,10 +9,10 @@ import Attendance from './Attendance'
 export default function EditStudent(props) {
     const student = (props.match.params.student)
     const context = useContext(ApiContext)
-    console.log(context.students)
+    // console.log(context.students)
     const filteredStudents = (!student)
         ? context.students
-        : context.students.filter(student => student.id === parseInt(student))
+        : context.students.filter(student => student.id === (student))
     return (
         <main role="main">
             <header role="banner">
@@ -25,11 +25,11 @@ export default function EditStudent(props) {
                     <div>
                         {/* Text box defaults as students information based on id */}
                         <label for="first-name">First name</label>
-                        <input placeholder='First Name' type="text" name='first-name' id='first-name' />
+                        <input placeholder={student.first_name} type="text" name='first-name' id='first-name' />
                     </div>
                     <div>
                         <label for="last-name">Last name</label>
-                        <input placeholder='Last Name' type="text" name='last-name' id='last-name'  />
+                        <input placeholder={student.last_name} type="text" name='last-name' id='last-name'  />
                     </div>
                     {/* View student attendance in calendar */}
                     <div>

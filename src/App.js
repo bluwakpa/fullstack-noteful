@@ -16,7 +16,7 @@ export default function App() {
         periods, 
         students
     }
-    console.log(data)
+    // console.log(data)
 
     return (
         <ApiContext.Provider value={value}>

@@ -29,21 +29,23 @@ export default function Attendance(props) {
             <section className="form-section dream-type-section">
                 <h2>Students</h2>
 
-                    {
-                        filteredStudents.forEach(student => (
-                            <label htmlFor="dream-type-normal">
-                                <h3>Period {student.class_period}</h3>
-                            </label>
-                        ))
-                    }
+                {
+                    filteredStudents.forEach(student => (
+                        <label htmlFor="dream-type-normal">
+                            <h3>Period {student.class_period}</h3>
+                        </label>
+                    ))
+                }
 
                 <form>
                     {/* student names Link to EditStudent */}
                     {
                         filteredStudents.map(student => (
+                            
                             <div>
+                                
                                 <label htmlFor="dream-type-normal">
-                                <Link to={`/edit-student/${period.period}`}><button type='submit'><span>{student.last_name}, {student.first_name}: Period {student.class_period}</span></button></Link>
+                                    <Link to={`/edit-student/${student.id}`}><button type='submit'><span>{student.last_name}, {student.first_name}: Period {student.class_period}</span></button></Link>
                                     <input type="checkbox" name="dream-type" id="dream-type-normal" value="0" className="dream-type-radio"></input>
                                 </label>
                             </div>
