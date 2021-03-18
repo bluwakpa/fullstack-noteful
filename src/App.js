@@ -14,7 +14,8 @@ export default function App() {
     const [students, setStudents] = useState(data.students)
     const value = {
         periods, 
-        students
+        students,
+        setStudents
     }
     // console.log(data)
 
