@@ -8,8 +8,10 @@ import AddPeriod from './AddPeriod'
 export default function Attendance(props) {
     const period = (props.match.params.period)
     const context = useContext(ApiContext)
+    console.log(context.students)
     // console.log(context.students)
     const filteredStudents = (!period)
+    
         ? context.students
         : context.students.filter(student => student.class_period === parseInt(period))
     return (

@@ -20,10 +20,11 @@ export default function EditStudent(props) {
     const onSubmit = (e) => {
         {/* insert fetch and then for db */}
         e.preventDefault()
-        const newStudent = {...student, first_name:firstName, last_name:lastName, class_period:classPeriod}
+        const newStudent = {...student, first_name:firstName, last_name:lastName, class_period:parseInt(classPeriod)}
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
         setStudents(newStudents)
+        
     }
    
     return (
@@ -48,7 +49,7 @@ export default function EditStudent(props) {
                     <div>
                         <article className="button-section">
                             <span className="custom-dropdown big">
-                                <select>
+                                <select onChange={classPeriodChange} type="number">
                                     {/* dropdown period defaults as students information */}
                                     <option value=""> {student.class_period} </option>
                                     <option value='1'>1</option>
