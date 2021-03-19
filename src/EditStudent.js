@@ -13,20 +13,33 @@ export default function EditStudent(props) {
     const [firstName, setFirstName] = useState(student.first_name)
     const [lastName, setLastName] = useState(student.last_name)
     const [classPeriod, setClassPeriod] = useState(student.class_period)
-    const firstNameChange = function(e) {setFirstName(e.target.value)} 
-    const lastNameChange = function(e) {setLastName(e.target.value)}
-    const classPeriodChange = function(e) {setClassPeriod(e.target.value)}
+    const firstNameChange = function (e) { setFirstName(e.target.value) }
+    const lastNameChange = function (e) { setLastName(e.target.value) }
+    const classPeriodChange = function (e) { setClassPeriod(e.target.value) }
     const setStudents = context.setStudents
     const onSubmit = (e) => {
-        {/* insert fetch and then for db */}
+        {/* insert fetch and then for db */ }
         e.preventDefault()
-        const newStudent = {...student, first_name:firstName, last_name:lastName, class_period:parseInt(classPeriod)}
+        const newStudent = { ...student, first_name: firstName, last_name: lastName, class_period: parseInt(classPeriod) }
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
         setStudents(newStudents)
-        
     }
-   
+    const handleClickDelete = (e) => {
+        e.preventDefault()
+        
+        const students = props.match.params.id
+        console.log("students", students)
+    }
+    // const onDelete = (e) => {
+    //     e.preventDefault()
+    //     const deleteStudent = {...student}
+    //     const deleteStudents = [...context.students]
+    //     deleteStudents[studentIndex] = deleteStudent
+    //     setDelete(deleteStudents)
+    //   }
+    // onDelete={onDelete}
+
     return (
         <main role="main">
             <header role="banner">
@@ -35,7 +48,7 @@ export default function EditStudent(props) {
             </header>
             <section>
 
-                <form className='signup-form' onSubmit={onSubmit}>
+                <form className='signup-form' onSubmit={onSubmit} >
                     <div>
                         {/* Text box defaults as students information based on id */}
                         <label for="first-name">First name</label>
@@ -63,9 +76,20 @@ export default function EditStudent(props) {
                             </span>
                         </article>
                     </div>
-                    {/* submit changes to student data */}
-                    <button type='submit'>Submit</button>
-                    <button type='delete'>Delete</button>
+                    {/* submit changes to student data 
+                    send user to addPeriod 
+                    message: your student has been updated */}
+                    <button type='submit'>Update</button>
+                    {/* delete student from class 
+                    alert user
+                    confirm delete: yes/no 
+                    yes will send user to addPeriod */}
+                    <button
+                        className='Student__delete'
+                        type='button'
+                        onClick={handleClickDelete}
+                    > Delete </button>
+                    {/* <button type='delete' >Delete</button> */}
                 </form>
             </section>
         </main>
