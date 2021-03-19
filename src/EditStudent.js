@@ -27,7 +27,6 @@ export default function EditStudent(props) {
     }
     const handleClickDelete = (e) => {
         e.preventDefault()
-        
         const students = props.match.params.id
         console.log("students", students)
     }

@@ -12,13 +12,25 @@ import ApiContext from './ApiContext'
 export default function App() {
     const [periods, setPeriods] = useState(data.periods)
     const [students, setStudents] = useState(data.students)
+    
     const value = {
         periods, 
         students,
-        setStudents
+        setStudents,
+        setPeriods,
+        // deleteStudent: handleDeleteStudent,
+        // addStudents,
+        // deleteStudents,
+        // handleClickDelete
     }
     // console.log(data)
-
+    const handleAddPeriod = period => {
+        setPeriods([
+            ...periods,
+            period
+        ])
+    }
+    const handleAddStudent = students
     return (
         <ApiContext.Provider value={value}>
             <div>
