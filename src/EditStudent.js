@@ -25,10 +25,15 @@ export default function EditStudent(props) {
         newStudents[studentIndex] = newStudent
         setStudents(newStudents)
     }
-    const handleClickDelete = (e) => {
-        e.preventDefault()
-        const students = props.match.params.id
-        console.log("students", students)
+    const handleClickDelete = () => {
+        // e.preventDefault()
+        const id = props.match.params.id
+        let deleted = context.students.filter(student => student.id !== id)
+        console.log("deleted", deleted)
+        setStudents(deleted)
+        props.history.push("/add-period")
+        // console.log("students", students)
+
     }
     // const onDelete = (e) => {
     //     e.preventDefault()

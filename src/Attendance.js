@@ -58,7 +58,7 @@ export default function Attendance(props) {
                 </form>
 
                 <section className="button-section">
-                    <Link to="/edit-student"><button>Add Student </button></Link>
+                    <Link to="/add-student"><button>Add Student </button></Link>
 
                 </section>
             </section>
