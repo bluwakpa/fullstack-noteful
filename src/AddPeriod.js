@@ -1,44 +1,43 @@
 import React, { useState, useContext } from 'react';
-import App from './App';
-import data from './data';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Attendance from './Attendance';
+// import App from './App';
+// import data from './data';
+import { Link } from 'react-router-dom';
+// import Attendance from './Attendance';
 import PresentForm from './PresentForm';
 import ApiContext from './ApiContext'
 
 export default function AddPeriod(props) {
-
+    const context = useContext(ApiContext)
+    const init = {
+        period: ""
+    }
+    const [formData, setFormData] = useState(init)
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.period]: e.target.value
+        })
+    }
+    const onSubmit = (e) => {
+        {/* insert fetch and then for db */ }
+        e.preventDefault()
+        const newPeriod = {
+            period: parseInt(formData.period),
+        }
+        context.setPeriods([...context.periods, newPeriod])
+        props.history.push(`/attendance/${formData.period}`)
+    }
     AddPeriod.defaultProps = {
         history: {
             push: () => { }
         },
     }
-    const context = useContext(ApiContext)
 
     const handleSubmit = e => {
         e.preventDefault()
         const period = {
             name: e.target['period-number'].value
         }
-        //   fetch(`${config.API_ENDPOINT}/periods`, {
-        //     method: 'POST',
-        //     headers: {
-        //       'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(period),
-        //   })
-        //     .then(res => {
-        //       if (!res.ok)
-        //         return res.json().then(e => Promise.reject(e))
-        //       return res.json()
-        //     })
-        //     .then(period => {
-        //       context.addPeriod(period)
-        //       props.history.push(`/period/${period.id}`)
-        //     })
-        //     .catch(error => {
-        //       console.error({ error })
-        //     })
     }
 
     return (
@@ -51,38 +50,28 @@ export default function AddPeriod(props) {
                     {
                         context.periods.map(period => (
                             <div>
-                                <Link to={`/attendance/${period.period}`}><button type='submit'><span>Classroom Period {period.period}</span></button></Link>
-                                {/* <label htmlFor="dream-type-normal">
-                                    <span>Classroom Period {period.period}</span>
-                                    <input type="radio" name="dream-type" id="dream-type-normal" value="0" className="dream-type-radio"></input>
-                                </label> */}
+                                <Link to={`/attendance/${period.period}`}>
+                                    <button type='submit'>
+                                        <span>Classroom Period {period.period}</span>
+                                    </button>
+                                </Link>
                             </div>
                         ))
                     }
-                    {/* <section className="results"> */}
-                        <div className="container-fluid">
-                            {/* <div className="container"> */}
-                                {/* <div className="row"> */}
-                                    {/* <div className="col-sm-8 start">
-                                        <p className="box description">Classroom</p>
-                                        <p className="box description">Period 1</p>
-                                    </div> */}
-                                    <section className="button-section">
-                                        <span className="custom-dropdown big">
-                                            <select>
-                                                <option value=""> Add Classroom Period </option>
-                                                <option value='4'>4</option>
-                                                <option value='5'>5</option>
-                                                <option value='6'>6</option>
-                                            </select>
-                                        </span>
-                                    </section>
-
-                                    {/* <Link to="/add-student"><button type='submit'>Add</button></Link> */}
-                                {/* </div> */}
-                            {/* </div> */}
-                        </div>
-                    {/* </section> */}
+                    <div className="container-fluid">
+                        <Link to={`/attendance/${period.period}`}>
+                            <section className="button-section">
+                                <span className="custom-dropdown big">
+                                    <select type='submit' value={formData.period} name='period' onChange={handleChange} onSubmit={onSubmit}>
+                                        <option value=""> Add Classroom Period </option>
+                                        <option value='4'>4</option>
+                                        <option value='5'>5</option>
+                                        <option value='6'>6</option>
+                                    </select>
+                                </span>
+                            </section>
+                        </Link>
+                    </div>
                 </form>
             </PresentForm>
         </main>

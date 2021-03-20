@@ -2,22 +2,19 @@ export default {
     "periods": [
         {
             period: 1,
-            id: "P-000001"
         },
         {
             period: 2,
-            id: "P-000002"
         },
         {
             period: 3,
-            id: "P-000003"
         }
     ],
     "students": [
         {
             first_name: "Maria",
             last_name: "Garcia",
-            id: "S-000001",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee1",
             class_period: 1,
             date: "01.01.21",
             present: "no"
@@ -25,7 +22,7 @@ export default {
         {
             first_name: "Nushi",
             last_name: "Wang",
-            id: "S-000002",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee2",
             class_period: 1,
             date: "01.01.21",
             present: "no"
@@ -33,7 +30,7 @@ export default {
         {
             first_name: "Mohammed",
             last_name: "Kumar",
-            id: "S-000003",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee3",
             class_period: 1,
             date: "01.01.21",
             present: "no"
@@ -41,7 +38,7 @@ export default {
         {
             first_name: "Jose",
             last_name: "Hernandez",
-            id: "S-000004",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee4",
             class_period: 1,
             date: "01.01.21",
             present: "no"
@@ -49,7 +46,7 @@ export default {
         {
             first_name: "Mary",
             last_name: "Smith",
-            id: "S-000005",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee5",
             class_period: 2,
             date: "01.01.21",
             present: "no"
@@ -57,7 +54,7 @@ export default {
         {
             first_name: "Jame",
             last_name: "Lopez",
-            id: "S-000006",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee6",
             class_period: 2,
             date: "01.01.21",
             present: "no"
@@ -65,7 +62,7 @@ export default {
         {
             first_name: "Patricia",
             last_name: "Murphy",
-            id: "S-000007",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee7",
             class_period: 2,
             date: "01.01.21",
             present: "no"
@@ -73,7 +70,7 @@ export default {
         {
             first_name: "John",
             last_name: "Rossi",
-            id: "S-000008",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee8",
             class_period: 2,
             date: "01.01.21",
             present: "no"
@@ -81,7 +78,7 @@ export default {
         {
             first_name: "Seo-yeon",
             last_name: "Kim",
-            id: "S-000009",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee9",
             class_period: 3,
             date: "01.01.21",
             present: "no"
@@ -89,7 +86,7 @@ export default {
         {
             first_name: "Mamadou",
             last_name: "Bio",
-            id: "S-000010",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767e10",
             class_period: 3,
             date: "01.01.21",
             present: "no"
@@ -97,7 +94,7 @@ export default {
         {
             first_name: "Fatin",
             last_name: "Devi",
-            id: "S-000011",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767e11",
             class_period: 3,
             date: "01.01.21",
             present: "no"
@@ -105,7 +102,7 @@ export default {
         {
             first_name: "Shristi",
             last_name: "Tan",
-            id: "S-000012",
+            id: "d19cc3dc-85ae-4df6-a3cd-089aec767e12",
             class_period: 3,
             date: "01.01.21",
             present: "no"

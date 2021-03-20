@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import App from './App';
-import data from './data'
+// import App from './App';
+// import data from './data'
 import ApiContext from './ApiContext';
 import { Route, Link } from 'react-router-dom'
-import AddPeriod from './AddPeriod'
+// import AddPeriod from './AddPeriod'
 
 export default function Attendance(props) {
     const period = (props.match.params.period)
@@ -23,9 +23,9 @@ export default function Attendance(props) {
 
             <article className="form-section">
                 <label className="dream-date-label" htmlFor="date-month">Date</label>
-                <input type="number" name="date-month" id="date-month" placeholder="01" min="1" max="12" required="" /> .
+                {/* <input type="number" name="date-month" id="date-month" placeholder="01" min="1" max="12" required="" /> .
                 <input type="number" name="date-day" className="date-day" placeholder="01" min="1" max="31" required="" /> .
-                <input type="number" name="date-year" className="date-year" placeholder="2021" min="2021" max="2031" required="" />
+                <input type="number" name="date-year" className="date-year" placeholder="2021" min="2021" max="2031" required="" /> */}
             </article>
 
             <section className="form-section dream-type-section">
