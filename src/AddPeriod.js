@@ -46,7 +46,7 @@ export default function AddPeriod(props) {
                 <h2>Select Period</h2>
             </header>
             <PresentForm onSubmit={handleSubmit}>
-                <form>
+            <form className='signup-form' onSubmit={onSubmit}>
                     {
                         context.periods.map(period => (
                             <div>
@@ -59,18 +59,17 @@ export default function AddPeriod(props) {
                         ))
                     }
                     <div className="container-fluid">
-                        <Link to={`/attendance/${period.period}`}>
-                            <section className="button-section">
-                                <span className="custom-dropdown big">
-                                    <select type='submit' value={formData.period} name='period' onChange={handleChange} onSubmit={onSubmit}>
-                                        <option value=""> Add Classroom Period </option>
-                                        <option value='4'>4</option>
-                                        <option value='5'>5</option>
-                                        <option value='6'>6</option>
-                                    </select>
-                                </span>
-                            </section>
-                        </Link>
+                        <section className="button-section">
+                            <span className="custom-dropdown big">
+                                <select value={formData.period} name='period' onChange={handleChange} required>
+                                    <option value=""> Add Classroom Period </option>
+                                    <option value='4'>4</option>
+                                    <option value='5'>5</option>
+                                    <option value='6'>6</option>
+                                </select>
+                            </span>
+                            <button type='submit' > Submit </button>
+                        </section>
                     </div>
                 </form>
             </PresentForm>
