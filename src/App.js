@@ -67,10 +67,9 @@ export default function App(props) {
                 <Route path="/attendance/:period" component={Attendance} />
                 <Route path="/add-student" component={AddStudent} />
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
-                {/* render={(props) => {
-                    <EditStudent students={props.match.params.id}/>}} */}
 
-                        <footer role="content-info">Copyright 2021</footer>
+                <footer role="content-info">Copyright 2021</footer>
+
             </div>
         </ApiContext.Provider>
 

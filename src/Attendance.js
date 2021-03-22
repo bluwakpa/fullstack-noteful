@@ -1,19 +1,35 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // import App from './App';
 // import data from './data'
 import ApiContext from './ApiContext';
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import AddPeriod from './AddPeriod'
 
 export default function Attendance(props) {
     const period = (props.match.params.period)
     const context = useContext(ApiContext)
-    console.log(context.students)
+    const [present, setPresent] = useState(false)
+
     // console.log(context.students)
     const filteredStudents = (!period)
-    
         ? context.students
         : context.students.filter(student => student.class_period === parseInt(period))
+
+    const handleChange = (e, id) => {
+        // setPresent(!e.target.checked)
+        let updated = context.students.map(student => {
+            if(student.id === id){
+                student.present=!student.present
+                student.modified = new Date()
+            }
+            return student;
+        })
+        
+        // let removed = context.students.filter(student => student.id !== id)
+        context.setStudents(updated)
+    }
+
+
     return (
         <main role="main">
             <header>
@@ -42,13 +58,15 @@ export default function Attendance(props) {
                 <form>
                     {/* student names Link to EditStudent */}
                     {
-                        filteredStudents.map(student => (
-                            
+                        filteredStudents.map((student, index) => (
                             <div>
-                                
-                                <label htmlFor="dream-type-normal">
-                                    <Link to={`/edit-student/${student.id}`}><button type='submit'><span>{student.last_name}, {student.first_name}: Period {student.class_period}</span></button></Link>
-                                    <input type="checkbox" name="dream-type" id="dream-type-normal" value="0" className="dream-type-radio"></input>
+                                <label htmlFor="present">
+                                    <Link to={`/edit-student/${student.id}`}>
+                                        <button type='submit'>
+                                            <span>{student.last_name}, {student.first_name}: Period {student.class_period}</span>
+                                        </button>
+                                    </Link>
+                                    <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={student.present} checked={student.present} className="present"></input>
                                 </label>
                             </div>
                         ))

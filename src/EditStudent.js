@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
-import App from './App';
-import data from './data'
+// import App from './App';
+// import data from './data'
 import ApiContext from './ApiContext';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import AddPeriod from './AddPeriod'
-import Attendance from './Attendance'
+// import { BrowserRouter, Route, Link } from 'react-router-dom'
+// import AddPeriod from './AddPeriod'
+// import Attendance from './Attendance'
 
 export default function EditStudent(props) {
     const context = useContext(ApiContext)

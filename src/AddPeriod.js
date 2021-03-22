@@ -15,7 +15,7 @@ export default function AddPeriod(props) {
     const handleChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.period]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     const onSubmit = (e) => {
@@ -45,8 +45,8 @@ export default function AddPeriod(props) {
             <header role="banner">
                 <h2>Select Period</h2>
             </header>
-            <PresentForm onSubmit={handleSubmit}>
-            <form className='signup-form' onSubmit={onSubmit}>
+            {/* <PresentForm onSubmit={handleSubmit}> */}
+                <div>
                     {
                         context.periods.map(period => (
                             <div>
@@ -58,6 +58,8 @@ export default function AddPeriod(props) {
                             </div>
                         ))
                     }
+                </div>
+                <form className='signup-form' onSubmit={onSubmit}>
                     <div className="container-fluid">
                         <section className="button-section">
                             <span className="custom-dropdown big">
@@ -72,7 +74,7 @@ export default function AddPeriod(props) {
                         </section>
                     </div>
                 </form>
-            </PresentForm>
+            {/* </PresentForm> */}
         </main>
     );
 }

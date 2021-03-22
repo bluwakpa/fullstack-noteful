@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import App from './App';
+// import App from './App';
 // import data from './data'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import Attendance from './Attendance'
-import AddPeriod from './AddPeriod'
+// import { BrowserRouter, Route, Link } from 'react-router-dom'
+// import Attendance from './Attendance'
+// import AddPeriod from './AddPeriod'
 import ApiContext from './ApiContext'
 import { v4 as uuidv4 } from 'uuid';
 
