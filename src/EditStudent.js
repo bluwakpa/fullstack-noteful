@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 // import App from './App';
 // import data from './data'
 import ApiContext from './ApiContext';
-// import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import AddPeriod from './AddPeriod'
 // import Attendance from './Attendance'
 
@@ -80,20 +80,31 @@ export default function EditStudent(props) {
                             </span>
                         </article>
                     </div>
+
                     {/* submit changes to student data 
                     send user to addPeriod 
                     message: your student has been updated */}
-                    <button type='submit'>Update</button>
+
+                    <button type='submit'> Update </button>
+
                     {/* delete student from class 
                     alert user
                     confirm delete: yes/no 
                     yes will send user to addPeriod */}
+
                     <button
                         className='Student__delete'
                         type='button'
                         onClick={handleClickDelete}
                     > Delete </button>
-                    {/* <button type='delete' >Delete</button> */}
+
+                    {/* view filtered student attendance history 
+                    send user to calendar */}
+
+                    <Link to={`/student-calendar/${student.id}`}>
+                        <button type='submit'> View </button>
+                    </Link>
+
                 </form>
             </section>
         </main>

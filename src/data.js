@@ -17,7 +17,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee1",
             class_period: 1,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: "true"
         },
         {
             first_name: "Nushi",
