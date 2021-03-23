@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
+import { Route, Link } from 'react-router-dom';
 // import App from './App';
 // import data from './data'
 import ApiContext from './ApiContext';
-import { Link } from 'react-router-dom'
 // import AddPeriod from './AddPeriod'
+import StudentAttendance from './StudentAttendance'
 
 export default function Attendance(props) {
     const period = (props.match.params.period)
     const context = useContext(ApiContext)
-    const [present, setPresent] = useState(false)
+    // const student = context.students.find(student => student.id === props.match.params.id);
+    // const [present, setPresent] = useState(student.present)
 
     // console.log(context.students)
     const filteredStudents = (!period)
@@ -19,7 +21,7 @@ export default function Attendance(props) {
         // setPresent(!e.target.checked)
         let updated = context.students.map(student => {
             if(student.id === id){
-                student.present=!student.present
+                student.present = !student.present
                 student.modified = new Date()
             }
             return student;
@@ -29,6 +31,10 @@ export default function Attendance(props) {
         context.setStudents(updated)
     }
 
+    const updateStudents = (newStudent) => {
+        context.setStudents([...context.students, newStudent])
+        props.history.push(`/attendance/${period}`)
+    }
 
     return (
         <main role="main">
@@ -57,18 +63,10 @@ export default function Attendance(props) {
 
                 <form>
                     {/* student names Link to EditStudent */}
+                    {/* state, value that uses that state, setState function to change state or onChange etc inside of parent comp */}
                     {
                         filteredStudents.map((student, index) => (
-                            <div>
-                                <label htmlFor="present">
-                                    <Link to={`/edit-student/${student.id}`}>
-                                        <button type='submit'>
-                                            <span>{student.last_name}, {student.first_name}: Period {student.class_period}</span>
-                                        </button>
-                                    </Link>
-                                    <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={student.present} checked={student.present} className="present"></input>
-                                </label>
-                            </div>
+                            <StudentAttendance student={student} updateStudents={updateStudents} />
                         ))
                     }
                     {/* submit the attendance to student data */}

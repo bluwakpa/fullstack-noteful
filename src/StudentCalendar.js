@@ -17,14 +17,14 @@ export default function StudentCalendar() {
     return (
         <main role="main">
             <header role="banner">
-            <h2>Student Calendar</h2>
-        <div>
-            <Calendar
-                onChange={onChange}
-                value={value}
-            />
-        </div>
-        </header>
+                <h2>Student Calendar</h2>
+                <div>
+                    <Calendar
+                        onChange={onChange}
+                        value={value}
+                    />
+                </div>
+            </header>
         </main>
     );
 }

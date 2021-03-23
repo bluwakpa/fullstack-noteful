@@ -17,7 +17,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee1",
             class_period: 1,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "true"
+            present: false
         },
         {
             first_name: "Nushi",
@@ -25,7 +25,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee2",
             class_period: 1,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Mohammed",
@@ -33,7 +33,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee3",
             class_period: 1,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Jose",
@@ -41,7 +41,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee4",
             class_period: 1,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Mary",
@@ -49,7 +49,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee5",
             class_period: 2,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Jame",
@@ -57,7 +57,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee6",
             class_period: 2,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Patricia",
@@ -65,7 +65,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee7",
             class_period: 2,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "John",
@@ -73,7 +73,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee8",
             class_period: 2,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Seo-yeon",
@@ -81,7 +81,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee9",
             class_period: 3,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Mamadou",
@@ -89,7 +89,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767e10",
             class_period: 3,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Fatin",
@@ -97,7 +97,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767e11",
             class_period: 3,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         },
         {
             first_name: "Shristi",
@@ -105,7 +105,7 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767e12",
             class_period: 3,
             modified: "2021-01-03T00:00:00.000Z",
-            present: "false"
+            present: false
         }
     ]
 };
