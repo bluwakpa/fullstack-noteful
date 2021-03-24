@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid';
 import ReactDOM from 'react-dom';
 
-export default function StudentAttendance({student, updateStudents}) {
+export default function StudentAttendance({ student, updateStudents }) {
     const [present, setPresent] = useState(student.present)
     // const [periods, setPeriods] = useState(data.periods)
     // const [students, setStudents] = useState(data.students)
     // const [firstName, setFirstName] = useState(student.first_name)
     // const [lastName, setLastName] = useState(student.last_name)
     // const [classPeriod, setClassPeriod] = useState(student.class_period)
-    // const [value, onChange] = useState(new Date());
+    const [value, onChange] = useState(new Date());
 
     const init = {
         firstName: "",
@@ -19,10 +19,43 @@ export default function StudentAttendance({student, updateStudents}) {
         period: ""
     }
 
+    let attendance = []
+
     const [formData, setFormData] = useState(init)
     const handleChange = (e) => {
         setPresent(e.target.value)
+        attendance.push({
+            id: student.id,
+            modified: new Date(),
+            present: true
+        })
+        console.log('attendance', attendance)
     }
+
+    // push.student.id into line 44
+    // AddPeriod.defaultProps = {
+    //     history: {
+    //         push: () => { }
+    //     },
+    // }
+
+    // React.createElement(
+    //     type,
+    //     [props],
+    //     [...children]
+    // )
+
+    // attendance: [
+    //     {
+    //         date: xxx,
+    //         present: true
+    //     },
+    // ]
+
+    // .then(attendance => {
+    //     context.StudentCalendar(calendar)
+    //     props.history.push(`/student-calendar/:id ${student.id}`)
+    // }
 
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
@@ -37,9 +70,7 @@ export default function StudentAttendance({student, updateStudents}) {
         }
         updateStudents(newStudent)
     }
-    // attendance: [
-    //     { date: xxx, present: true },
-    //   ]
+
 
     return (
         <div>
