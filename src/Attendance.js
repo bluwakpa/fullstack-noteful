@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 // import App from './App';
-// import data from './data'
+import data from './data'
 import ApiContext from './ApiContext';
 // import AddPeriod from './AddPeriod'
 import StudentAttendance from './StudentAttendance'
@@ -35,6 +35,8 @@ export default function Attendance(props) {
         context.setStudents([...context.students, newStudent])
         props.history.push(`/attendance/${period}`)
     }
+
+    // const [attendance, setAttendance] = useState(data.attendance)
 
     return (
         <main role="main">

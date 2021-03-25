@@ -13,6 +13,7 @@ import StudentCalendar from './StudentCalendar'
 export default function App(props) {
     const [periods, setPeriods] = useState(data.periods)
     const [students, setStudents] = useState(data.students)
+    const [attendance, setAttendance] = useState(data.attendance)
     // const [students, deleteStudents] = useState(data.students)
     const handleClickDelete = (e) => {
         e.preventDefault()

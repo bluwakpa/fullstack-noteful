@@ -20,6 +20,9 @@ export default function StudentAttendance({ student, updateStudents }) {
     }
 
     let attendance = []
+    
+    // set attendance to a global state
+    // context grab attendance
 
     const [formData, setFormData] = useState(init)
     const handleChange = (e) => {
@@ -32,6 +35,15 @@ export default function StudentAttendance({ student, updateStudents }) {
         console.log('attendance', attendance)
     }
 
+    // Jonathan:
+    // I think you could make attendance into a local state property
+    // with a setAttendance method
+    // const [attendance, setAttendance] = useState()
+    // you will want to use a spread operator instead of push for this
+    // you might want to have the student attendance state live at the parent level 
+    // and pass it into the student attendance component as a prop - then use a callback prop 
+    // to adjust the state at the parent level
+    
     // push.student.id into line 44
     // AddPeriod.defaultProps = {
     //     history: {
@@ -58,7 +70,7 @@ export default function StudentAttendance({ student, updateStudents }) {
     // }
 
     const onSubmit = (e) => {
-        {/* insert fetch and then for db */ }
+        {/* insert fetch and .then for db */ }
         e.preventDefault()
         const newStudent = {
             first_name: formData.firstName,
