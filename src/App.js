@@ -37,6 +37,17 @@ export default function App(props) {
             period
         ])
     }
+
+    // const editStudent = (newStudent) => {
+    //     let newStudent = [...students];
+    //     for (let i = 0; i < newStudents.length; i++) {
+    //         if (newStudents[i].id === newStudents.id) {
+    //             newStudents[i] = newStudent;
+    //         }
+    //     }
+    //     setStudents(newStudents);
+    // }
+    
     // const handleClickDelete = student => {
     //     setStudents([
     //         ...students,

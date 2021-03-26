@@ -11,14 +11,17 @@ export default function StudentCalendar({ match }) {
     const [value, onChange] = useState(new Date());
     const [present, setPresent] = useState(student.present)
     const [attendance, setAttendance] = useState(data.attendance)
-    console.log(student)
+    // console.log(student)
+    console.log(data.students)
+    // console.log(match.params.id)
 
     return (
         <main role="main">
             <header role="banner">
                 <h2>Student Calendar</h2>
                 <h3>
-                    {student.first_name} {student.last_name}
+                    {student.first_name} {student.last_name} <br />
+                    Period {student.class_period}
                 </h3>
 
                 <div>

@@ -5,12 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactDOM from 'react-dom';
 
 export default function StudentAttendance({ student, updateStudents }) {
-    const [present, setPresent] = useState(student.present)
-    // const [periods, setPeriods] = useState(data.periods)
-    // const [students, setStudents] = useState(data.students)
-    // const [firstName, setFirstName] = useState(student.first_name)
-    // const [lastName, setLastName] = useState(student.last_name)
-    // const [classPeriod, setClassPeriod] = useState(student.class_period)
+    const [present, setPresent] = useState(student.present);
     const [value, onChange] = useState(new Date());
 
     const init = {
@@ -19,12 +14,22 @@ export default function StudentAttendance({ student, updateStudents }) {
         period: ""
     }
 
+    const [formData, setFormData] = useState(init)
+    // const [periods, setPeriods] = useState(data.periods)
+    // const [students, setStudents] = useState(data.students)
+    // const [firstName, setFirstName] = useState(student.first_name)
+    // const [lastName, setLastName] = useState(student.last_name)
+    // const [classPeriod, setClassPeriod] = useState(student.class_period)
+    const context = useContext(ApiContext)
+
+    
+    //1
     let attendance = []
     
     // set attendance to a global state
     // context grab attendance
 
-    const [formData, setFormData] = useState(init)
+    
     const handleChange = (e) => {
         setPresent(e.target.value)
         attendance.push({
@@ -34,6 +39,32 @@ export default function StudentAttendance({ student, updateStudents }) {
         })
         console.log('attendance', attendance)
     }
+
+    //2
+    // const handleChange = (e) => {
+    //     present = !present; // replace attendance array []
+    // }
+
+
+
+    // Mike:
+    // As far as I can tell, the "attendance array" in StudentAttendance is not necessary. 
+    // StudentAttendance is only showing one student at a time, and that `student` object 
+    // is passed in through its props. Great composition! Instead of an `attendance` array, 
+    // we can use a `present` boolean that defaults to `student.present`. Then the `handleChange` 
+    // function can look like this.
+
+
+    // Then, when the user submits the StudentAttendance form, we can update that student. 
+    // I see that `editStudent` exists on the context; we'll need to define that function in App, 
+    // and make that context available to the StudentAttendance component.
+    // Now we can go to App and define `editStudent`. It should take in a student object and update 
+    // that student in App's state. I'm assuming that a student's ID will never change.
+
+    // Make sure to put `editStudent` on App's `value` as well, that way it will be available on the context.
+    // In StudentCalendar, you can also add the `useContext(ApiContext)` hook; then it can use the `students` 
+    // from that context instead of from the data file. That way, any time StudentAttendance changes a student, 
+    // StudentCalendar should reflect that change, since they're both using the context.
 
     // Jonathan:
     // I think you could make attendance into a local state property
@@ -89,10 +120,13 @@ export default function StudentAttendance({ student, updateStudents }) {
             <label htmlFor="present">
                 <Link to={`/edit-student/${student.id}`}>
                     <button type='submit'>
-                        <span>{student.last_name}, {student.first_name}: Period {student.class_period}</span>
+                        <span>{student.last_name}, {student.first_name}</span>
+                        {/* : Period {student.class_period} */}
                     </button>
                 </Link>
                 <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={present} className="present"></input>
+                {/* 3 No longer need .id
+                <input onChange={handleChange} type="checkbox" name="present" id="present" value={present} className="present"></input> */}
             </label>
         </div>
     )

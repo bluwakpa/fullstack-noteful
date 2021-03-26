@@ -43,10 +43,13 @@ export default function Attendance(props) {
             <header>
 
                 <h1>Attendance</h1>
+                <h3>
+                    Period {period}
+                </h3>
             </header>
 
             <article className="form-section">
-                <label className="dream-date-label" htmlFor="date-month">Date</label>
+                <label className="dream-date-label" htmlFor="date-month">Date: {data.modified} </label>
                 {/* <input type="number" name="date-month" id="date-month" placeholder="01" min="1" max="12" required="" /> .
                 <input type="number" name="date-day" className="date-day" placeholder="01" min="1" max="31" required="" /> .
                 <input type="number" name="date-year" className="date-year" placeholder="2021" min="2021" max="2031" required="" /> */}
@@ -55,13 +58,13 @@ export default function Attendance(props) {
             <section className="form-section dream-type-section">
                 <h2>Students</h2>
 
-                {
+                {/* {
                     filteredStudents.forEach(student => (
                         <label htmlFor="dream-type-normal">
                             <h3>Period {student.class_period}</h3>
                         </label>
                     ))
-                }
+                } */}
 
                 <form>
                     {/* student names Link to EditStudent */}
