@@ -51,7 +51,7 @@ export default function Attendance(props) {
                     {/* student names Link to EditStudent */}
                     {
                         filteredStudents.map((student, index) => (
-                            <StudentAttendance student={student} updateStudents={updateStudents} />
+                            <StudentAttendance index={index} student={student} updateStudents={updateStudents} />
                         ))
                     }
                     {/* submit the attendance to student data */}
