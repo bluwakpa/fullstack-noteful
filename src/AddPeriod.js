@@ -8,16 +8,20 @@ import ApiContext from './ApiContext'
 
 export default function AddPeriod(props) {
     const context = useContext(ApiContext)
+    console.log(context.periods)
     const init = {
         period: ""
     }
     const [formData, setFormData] = useState(init)
+    
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         })
     }
+
+    // 3 Replace onSubmit
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
         e.preventDefault()
@@ -40,6 +44,11 @@ export default function AddPeriod(props) {
         }
     }
 
+    let allPeriods = [1,2,3,4,5,6]
+
+    allPeriods = allPeriods.filter(filteredPeriod => !context.periods.some(period => period.period === filteredPeriod))
+    console.log(allPeriods)
+    
     return (
         <main role="main">
             <header role="banner">
@@ -65,9 +74,11 @@ export default function AddPeriod(props) {
                             <span className="custom-dropdown big">
                                 <select value={formData.period} name='period' onChange={handleChange} required>
                                     <option value=""> Add Classroom Period </option>
-                                    <option value='4'>4</option>
-                                    <option value='5'>5</option>
-                                    <option value='6'>6</option>
+                                    {
+                                        allPeriods.map(period => (
+                                            <option value={period}>{period}</option>
+                                        ))
+                                    }
                                 </select>
                             </span>
                             <button type='submit' > Submit </button>

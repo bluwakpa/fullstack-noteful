@@ -23,7 +23,7 @@ export default function StudentAttendance({ student, updateStudents }) {
     const context = useContext(ApiContext)
 
     
-    //1
+    // 1
     let attendance = []
     
     // set attendance to a global state
@@ -40,7 +40,7 @@ export default function StudentAttendance({ student, updateStudents }) {
         console.log('attendance', attendance)
     }
 
-    //2
+    // 2
     // const handleChange = (e) => {
     //     present = !present; // replace attendance array []
     // }
@@ -90,7 +90,7 @@ export default function StudentAttendance({ student, updateStudents }) {
 
     // attendance: [
     //     {
-    //         date: xxx,
+    //         modified: "2021-01-03T00:00:00.000Z",
     //         present: true
     //     },
     // ]
@@ -100,10 +100,15 @@ export default function StudentAttendance({ student, updateStudents }) {
     //     props.history.push(`/student-calendar/:id ${student.id}`)
     // }
 
+    // 3 Replace onSubmit
     const onSubmit = (e) => {
         {/* insert fetch and .then for db */ }
         e.preventDefault()
         const newStudent = {
+        //     ...student, // use all old student properties
+        //     present // EXCEPT present, use only local present
+        // }
+        // editStudent(newStudent);
             first_name: formData.firstName,
             last_name: formData.lastName,
             id: uuidv4(),

@@ -95,3 +95,21 @@ handleDeleteCard = (studentId) => {
             />
           ))}
         </div>
+
+<h1>Attendance</h1>
+                <h3>
+                    Period {period}
+                </h3>
+
+...student, // use all old student properties
+present // EXCEPT present; use local
+
+const editStudent = (newStudent) =>{
+  let newStudent = [...students];
+  for (let i = 0; i < newStudents.length; i++) {
+      if (newStudents[i].id === newStudents.id) {
+          newStudents[i] = newStudent;
+      }
+  }
+  setStudents(newStudents);
+}

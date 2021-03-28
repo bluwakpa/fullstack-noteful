@@ -5,6 +5,7 @@ import ApiContext from './ApiContext'
 import StudentAttendance from './StudentAttendance'
 import Attendance from './Attendance'
 import data from './data';
+import 'react-calendar/dist/Calendar.css';
 
 export default function StudentCalendar({ match }) {
     const student = data.students.find(student => student.id === match.params.id)
@@ -12,7 +13,7 @@ export default function StudentCalendar({ match }) {
     const [present, setPresent] = useState(student.present)
     const [attendance, setAttendance] = useState(data.attendance)
     // console.log(student)
-    console.log(data.students)
+    console.log(student)
     // console.log(match.params.id)
 
     return (

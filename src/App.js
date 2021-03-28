@@ -38,6 +38,7 @@ export default function App(props) {
         ])
     }
 
+    // 4
     // const editStudent = (newStudent) => {
     //     let newStudent = [...students];
     //     for (let i = 0; i < newStudents.length; i++) {
@@ -47,7 +48,7 @@ export default function App(props) {
     //     }
     //     setStudents(newStudents);
     // }
-    
+
     // const handleClickDelete = student => {
     //     setStudents([
     //         ...students,

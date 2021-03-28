@@ -12,7 +12,7 @@ export default function Attendance(props) {
     // const student = context.students.find(student => student.id === props.match.params.id);
     // const [present, setPresent] = useState(student.present)
 
-    // console.log(context.students)
+    console.log(context.periods)
     const filteredStudents = (!period)
         ? context.students
         : context.students.filter(student => student.class_period === parseInt(period))
