@@ -13,8 +13,8 @@ import StudentCalendar from './StudentCalendar'
 export default function App(props) {
     const [periods, setPeriods] = useState(data.periods)
     const [students, setStudents] = useState(data.students)
-    const [attendance, setAttendance] = useState(data.attendance)
-    // const [students, deleteStudents] = useState(data.students)
+    // const [attendance, setAttendance] = useState(data.attendance)
+
     const handleClickDelete = (e) => {
         e.preventDefault()
         const students = props.match.params.id
@@ -25,42 +25,15 @@ export default function App(props) {
         students,
         setStudents,
         setPeriods,
-        // deleteStudent: handleDeleteStudent,
-        // addStudents,
-        // deleteStudents,
         handleClickDelete
     }
-    // console.log(data)
-    const handleAddPeriod = period => {
-        setPeriods([
-            ...periods,
-            period
-        ])
-    }
 
-    // 4
-    // const editStudent = (newStudent) => {
-    //     let newStudent = [...students];
-    //     for (let i = 0; i < newStudents.length; i++) {
-    //         if (newStudents[i].id === newStudents.id) {
-    //             newStudents[i] = newStudent;
-    //         }
-    //     }
-    //     setStudents(newStudents);
-    // }
-
-    // const handleClickDelete = student => {
-    //     setStudents([
-    //         ...students,
-    //         student
+    // const handleAddPeriod = period => {
+    //     setPeriods([
+    //         ...periods,
+    //         period
     //     ])
     // }
-    // make a new delete function in App.js that deletes the student from the state in App.js, 
-    // and pass a reference to that function in the route to EditStudent. 
-    // Then, in handleClickDelete in EditStudent, call that function (which should be in the props 
-    // for EditStudent) to delete the student from the state Since the state lives in App.js
-    // You need a function in App.js that removes the student from the state
-
 
     const handleAddStudent = students
     return (
@@ -69,11 +42,8 @@ export default function App(props) {
                 <nav role="navigation">
                     <Link to="/"> Present </Link>
                     <br />
-                    {/* <Link to="/edit-student"> Edit |</Link> */}
                     <Link to="/add-student"> Student |</Link>
-
                     <Link to="/add-period">| Period </Link>
-                    {/* <Link to="/attendance">| Attendance </Link> */}
                 </nav>
 
                 <Route exact path="/" component={Home} />
@@ -84,9 +54,7 @@ export default function App(props) {
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
                 <footer role="content-info">Copyright 2021</footer>
-
             </div>
         </ApiContext.Provider>
-
     );
 }

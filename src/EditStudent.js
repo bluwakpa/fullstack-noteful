@@ -1,10 +1,6 @@
 import React, { useState, useContext } from 'react';
-// import App from './App';
-// import data from './data'
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
-// import AddPeriod from './AddPeriod'
-// import Attendance from './Attendance'
 
 export default function EditStudent(props) {
     const context = useContext(ApiContext)
@@ -33,16 +29,7 @@ export default function EditStudent(props) {
         setStudents(deleted)
         props.history.push("/add-period")
         // console.log("students", students)
-
     }
-    // const onDelete = (e) => {
-    //     e.preventDefault()
-    //     const deleteStudent = {...student}
-    //     const deleteStudents = [...context.students]
-    //     deleteStudents[studentIndex] = deleteStudent
-    //     setDelete(deleteStudents)
-    //   }
-    // onDelete={onDelete}
 
     return (
         <main role="main">

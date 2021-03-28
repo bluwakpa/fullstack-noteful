@@ -1,9 +1,5 @@
 import React, { useState, useContext } from 'react';
-// import App from './App';
-// import data from './data';
 import { Link } from 'react-router-dom';
-// import Attendance from './Attendance';
-import PresentForm from './PresentForm';
 import ApiContext from './ApiContext'
 
 export default function AddPeriod(props) {
@@ -21,7 +17,6 @@ export default function AddPeriod(props) {
         })
     }
 
-    // 3 Replace onSubmit
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
         e.preventDefault()
@@ -54,7 +49,6 @@ export default function AddPeriod(props) {
             <header role="banner">
                 <h2>Select Period</h2>
             </header>
-            {/* <PresentForm onSubmit={handleSubmit}> */}
                 <div>
                     {
                         context.periods.map(period => (
@@ -85,7 +79,6 @@ export default function AddPeriod(props) {
                         </section>
                     </div>
                 </form>
-            {/* </PresentForm> */}
         </main>
     );
 }

@@ -1,11 +1,6 @@
 import React, {  } from 'react';
-// import data from './data'
 import { Link } from 'react-router-dom'
 import './index.css';
-// import AddPeriod from './AddPeriod'
-// import Attendance from './Attendance'
-// import AddStudent from './AddStudent'
-// import EditStudent from './EditStudent'
 
 export default function App() {
     return (
