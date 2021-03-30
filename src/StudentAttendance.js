@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function StudentAttendance({ student, updateStudents }) {
     const [attendance, setAttendance] = useState({attendance: false, date: new Date()});
     const [value, onChange] = useState(new Date());
-
+    
     const init = {
         firstName: "",
         lastName: "",
