@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-// import { Link } from 'react-router-dom';
-// import ApiContext from './ApiContext'
-// import StudentAttendance from './StudentAttendance'
-// import Attendance from './Attendance'
 import data from './data';
 import 'react-calendar/dist/Calendar.css';
 

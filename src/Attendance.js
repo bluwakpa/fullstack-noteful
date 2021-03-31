@@ -6,7 +6,6 @@ import ApiContext from './ApiContext';
 // import AddPeriod from './AddPeriod'
 import StudentAttendance from './StudentAttendance'
 
-
 export default function Attendance(props) {
     const period = (props.match.params.period)
     const context = useContext(ApiContext)
@@ -33,7 +32,7 @@ export default function Attendance(props) {
         props.history.push(`/attendance/${period}`)
     }
 
-    
+
 
     return (
         <main role="main">
@@ -54,14 +53,10 @@ export default function Attendance(props) {
                     {/* student names Link to EditStudent */}
                     {
                         filteredStudents.map((student, index) => {
-                            const attendance = student.attendance.find(attendance => attendance.present === data.modified)
-                            console.log(student.attendance, data.modified)
+                            // const attendance = student.attendance.find(attendance => attendance.present === data.modified)
+                            // console.log(student.attendance, data.modified)
                             return <StudentAttendance index={index} student={student} updateStudents={updateStudents} />
-                            
-                        }
-                            
-                        
-                        )
+                        })
                     }
                     {/* submit the attendance to student data */}
                     <button type="submit">Submit</button>

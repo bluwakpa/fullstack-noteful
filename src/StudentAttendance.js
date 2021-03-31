@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 // import ReactDOM from 'react-dom';
 
 export default function StudentAttendance({ student, updateStudents }) {
-    const [attendance, setAttendance] = useState({attendance: false, date: new Date()});
+    // const [attendance, setAttendance] = useState({attendance: false, date: new Date()});
+    const [present, setPresent] = useState(student.present);
     const [value, onChange] = useState(new Date());
     
     const init = {
@@ -17,9 +18,18 @@ export default function StudentAttendance({ student, updateStudents }) {
     const [formData, setFormData] = useState(init)
     const context = useContext(ApiContext)
 
+    let attendance = []
+    
     const handleChange = (e) => {
+        setPresent(e.target.value)
+        attendance.push({
+            id: student.id,
+            modified: new Date(),
+            present: true
+        })
+        console.log('attendance', attendance)
 
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     // const onSubmit = (e) => {
@@ -44,7 +54,8 @@ export default function StudentAttendance({ student, updateStudents }) {
                         <span>{student.last_name}, {student.first_name}</span>
                     </button>
                 </Link>
-                <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={attendance.attendance} className="present"></input>
+                <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={present} className="present"></input>
+                {/* <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={attendance.attendance} className="present"></input> */}
             </label>
         </div>
     )

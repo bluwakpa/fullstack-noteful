@@ -13,6 +13,7 @@ export default function EditStudent(props) {
     const lastNameChange = function (e) { setLastName(e.target.value) }
     const classPeriodChange = function (e) { setClassPeriod(e.target.value) }
     const setStudents = context.setStudents
+
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
         e.preventDefault()
@@ -21,6 +22,7 @@ export default function EditStudent(props) {
         newStudents[studentIndex] = newStudent
         setStudents(newStudents)
     }
+
     const handleClickDelete = () => {
         // e.preventDefault()
         const id = props.match.params.id
@@ -28,7 +30,7 @@ export default function EditStudent(props) {
         console.log("deleted", deleted)
         setStudents(deleted)
         props.history.push("/add-period")
-        // console.log("students", students)
+        // console.log("student", student)
     }
 
     return (

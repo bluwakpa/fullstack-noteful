@@ -25,7 +25,8 @@ export default function AddStudent(props) {
             last_name: formData.lastName,
             id: uuidv4(),
             class_period: parseInt(formData.period),
-            attendance: []
+            present: "no"
+            // attendance: []
         }
         context.setStudents([...context.students, newStudent])
         props.history.push(`/attendance/${formData.period}`)
