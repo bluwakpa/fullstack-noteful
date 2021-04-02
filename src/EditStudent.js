@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
 
@@ -13,6 +13,9 @@ export default function EditStudent(props) {
     const lastNameChange = function (e) { setLastName(e.target.value) }
     const classPeriodChange = function (e) { setClassPeriod(e.target.value) }
     const setStudents = context.setStudents
+    const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
+
+    // console.log('attendence ==>', [attendance])
 
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
@@ -20,6 +23,7 @@ export default function EditStudent(props) {
         const newStudent = { ...student, first_name: firstName, last_name: lastName, class_period: parseInt(classPeriod) }
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
+        console.log('EditStudent', newStudent)
         setStudents(newStudents)
     }
 
@@ -27,11 +31,12 @@ export default function EditStudent(props) {
         // e.preventDefault()
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
-        console.log("deleted", deleted)
+        // console.log("deleted", deleted)
         setStudents(deleted)
         props.history.push("/add-period")
         // console.log("student", student)
     }
+    console.log(student)
 
     return (
         <main role="main">

@@ -28,6 +28,7 @@ export default function Attendance(props) {
     // }
 
     const updateStudents = (newStudent) => {
+        console.log(newStudent)
         context.setStudents([...context.students, newStudent])
         props.history.push(`/attendance/${period}`)
     }

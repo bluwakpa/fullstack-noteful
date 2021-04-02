@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Calendar from 'react-calendar';
 import data from './data';
+import ApiContext from './ApiContext';
 import 'react-calendar/dist/Calendar.css';
 
 export default function StudentCalendar({ match }) {
-    const student = data.students.find(student => student.id === match.params.id)
     const [value, onChange] = useState(new Date());
-    // const [present, setPresent] = useState(student.present)
-    // const [attendance, setAttendance] = useState(data.attendance)
+    const context = useContext(ApiContext)
+    const student = context.students.find(student => student.id === match.params.id);
 
     console.log(student)
-    // console.log(match.params.id)
+    const updateStudents = (newStudent) => {
+        context.setStudents([...context.students, newStudent])
+        // props.history.push(`/attendance/${period}`)
+    }
+
     
     const datesToAddClassTo = [student.present, data.attendance];
 

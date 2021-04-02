@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid';
-// import ReactDOM from 'react-dom';
 
-export default function StudentAttendance({ student, updateStudents }) {
+
+export default function StudentAttendance({ student, index, updateStudents }) {
     // const [attendance, setAttendance] = useState({attendance: false, date: new Date()});
     const [present, setPresent] = useState(student.present);
     const [value, onChange] = useState(new Date());
+    const context = useContext(ApiContext)
     
     const init = {
         firstName: "",
@@ -16,10 +16,10 @@ export default function StudentAttendance({ student, updateStudents }) {
     }
 
     const [formData, setFormData] = useState(init)
-    const context = useContext(ApiContext)
+    const {setStudents, students} = useContext(ApiContext)
 
     let attendance = []
-    
+
     const handleChange = (e) => {
         setPresent(e.target.value)
         attendance.push({
@@ -27,9 +27,13 @@ export default function StudentAttendance({ student, updateStudents }) {
             modified: new Date(),
             present: true
         })
-        console.log('attendance', attendance)
-
-        // console.log(e.target.value)
+        const newStudent = {...student, present: true}
+        const studentsCopy = [...students]
+        studentsCopy[index] = newStudent
+        console.log("studentsCopy", studentsCopy)
+        //new student variable in place of old student index
+        setStudents(studentsCopy)
+        // console.log('StudentAttendance', newStudent)
     }
 
     // const onSubmit = (e) => {
