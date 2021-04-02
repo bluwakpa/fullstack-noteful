@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
 import Calendar from 'react-calendar';
+import { differenceInCalendarDays } from 'date-fns';
 import data from './data';
 import ApiContext from './ApiContext';
 import 'react-calendar/dist/Calendar.css';
 
 export default function StudentCalendar({ match }) {
     const [value, onChange] = useState(new Date());
-    const context = useContext(ApiContext)
+    const context = useContext(ApiContext);
     const student = context.students.find(student => student.id === match.params.id);
+    const datesToAddClassTo = [student.present, data.attendance];
 
     console.log(student)
     const updateStudents = (newStudent) => {
@@ -15,18 +17,19 @@ export default function StudentCalendar({ match }) {
         // props.history.push(`/attendance/${period}`)
     }
 
-    
-    const datesToAddClassTo = [student.present, data.attendance];
+    function isSameDay(a, b) {
+        return differenceInCalendarDays(a, b) === 0;
+    }
 
-    // function tileClassPresent({ date, view }) {
-    //     // Add class to tiles in month view only
-    //     if (view === 'month') {
-    //       // Check if a date React-Calendar wants to check is on the list of dates to add class to
-    //       if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))) {
-    //         return 'myClassPresent';
-    //       }
-    //     }
-    //   }
+    function tileClassPresent({ date, view }) {
+        // Add class to tiles in month view only
+        if (view === 'month') {
+          // Check if a date React-Calendar wants to check is on the list of dates to add class to
+          if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))) {
+            return 'myClassPresent';
+          }
+        }
+      }
 
     return (
         <main role="main">
@@ -41,7 +44,7 @@ export default function StudentCalendar({ match }) {
                     <Calendar
                         onChange={onChange}
                         value={value}
-                        // tileClassPresent={tileClassPresent}
+                        tileClassPresent={tileClassPresent}
                     />
                 </div>
             </header>
