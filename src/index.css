@@ -102,3 +102,10 @@ section:nth-child(even) {
 .student {
   padding: 6% 0 0 0;
 }
+
+.myClassPresent {
+  border: 2px solid green !important;
+  color: black;
+  background-color: green !important;
+  font-weight: bolder !important;
+}
