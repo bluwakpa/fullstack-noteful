@@ -3,16 +3,19 @@ import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
 
 
-export default function StudentAttendance({ student, index, updateStudents }) {
+export default function StudentAttendance({ student, updateStudents, checked, setChecked }) {
     const [present, setPresent] = useState(student.present);
     const [value, onChange] = useState(new Date());
+    
     const context = useContext(ApiContext)
     const {setStudents, students} = context
 
     const handleChange = (e) => {
-        setPresent(e.target.checked)
-        students[index].present = e.target.checked
-        setStudents(students)
+        // setPresent(e.target.checked)
+        student.present = e.target.checked
+        console.log(student)
+        // setStudents(students)
+        updateStudents(student)
     }
 
     return (
@@ -23,7 +26,7 @@ export default function StudentAttendance({ student, index, updateStudents }) {
                         <span>{student.last_name}, {student.first_name}</span>
                     </button>
                 </Link>
-                <input onChange={(e) => handleChange(e, student.id)} type="checkbox" name="present" id="present" value={present} className="present"></input>
+                <input onChange={(e) => setChecked(!checked)} type="checkbox" name="present" id="present" value={checked} className="present"></input>
             </label>
         </div>
     )

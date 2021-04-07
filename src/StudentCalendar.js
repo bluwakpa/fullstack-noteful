@@ -44,7 +44,7 @@ export default function StudentCalendar({ match }) {
                 <h2>Student Calendar</h2>
                 <h3>
                     {student.first_name} {student.last_name} <br />
-                    Period {student.class_period}
+                    {/* Period {student.class_period} */}
                 </h3>
 
                 <div>

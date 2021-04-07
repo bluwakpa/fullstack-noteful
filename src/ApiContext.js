@@ -1,9 +1,10 @@
 import React from 'react'
 
 export default React.createContext({
-  periods: [],
+  // periods: [],
   students: [],
-  addPeriod: () => {},
+  attendance: {},
+  // addPeriod: () => {},
   addStudent: () => {},
   editStudent: () => {},
 })

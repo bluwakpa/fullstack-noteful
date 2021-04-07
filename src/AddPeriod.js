@@ -32,13 +32,6 @@ export default function AddPeriod(props) {
         },
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        const period = {
-            name: e.target['period-number'].value
-        }
-    }
-
     let allPeriods = [1,2,3,4,5,6]
 
     allPeriods = allPeriods.filter(filteredPeriod => !context.periods.some(period => period.period === filteredPeriod))

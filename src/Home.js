@@ -9,10 +9,10 @@ export default function App() {
                 <h2>Home</h2>
             </header>
             <section>
-                <p>Take attendance of your classroom by creating student profiles for each class period.</p>
+                <p>Take attendance of your classroom and create new student profiles.</p>
             </section>
             <section className="button-section">
-                <Link to="/add-period"><button> Select Period </button></Link>
+                <Link to="/attendance/1"><button> Take Attendance </button></Link>
             </section>
         </main>
     );

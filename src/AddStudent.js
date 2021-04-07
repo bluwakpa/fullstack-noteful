@@ -7,7 +7,7 @@ export default function AddStudent(props) {
     const init = {
         firstName: "",
         lastName: "",
-        period: ""
+        // period: ""
     }
     const [formData, setFormData] = useState(init)
     const handleChange = (e) => {
@@ -24,7 +24,7 @@ export default function AddStudent(props) {
             first_name: formData.firstName,
             last_name: formData.lastName,
             id: uuidv4(),
-            class_period: parseInt(formData.period),
+            // class_period: parseInt(formData.period),
             present: "no"
             // attendance: []
         }
@@ -46,7 +46,7 @@ export default function AddStudent(props) {
                         <label htmlFor="last-name">Last name</label>
                         <input type="text" name='lastName' id='last-name' placeholder='Last Name' value={formData.lastName} onChange={handleChange}/>
                         <section className="button-section">
-                            <span className="custom-dropdown big">
+                            {/* <span className="custom-dropdown big">
                                 <select value={formData.period} name='period' onChange={handleChange} required>
                                     <option value=""> Period </option>
                                     <option value='1'>1</option>
@@ -56,7 +56,7 @@ export default function AddStudent(props) {
                                     <option value='5'>5</option>
                                     <option value='6'>6</option>
                                 </select>
-                            </span>
+                            </span> */}
                             <button type='submit' >Add</button>
                         </section>
                     </div>

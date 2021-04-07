@@ -8,19 +8,19 @@ export default function EditStudent(props) {
     const studentIndex = context.students.indexOf(student)
     const [firstName, setFirstName] = useState(student.first_name)
     const [lastName, setLastName] = useState(student.last_name)
-    const [classPeriod, setClassPeriod] = useState(student.class_period)
+    // const [classPeriod, setClassPeriod] = useState(student.class_period)
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
-    const classPeriodChange = function (e) { setClassPeriod(e.target.value) }
+    // const classPeriodChange = function (e) { setClassPeriod(e.target.value) }
     const setStudents = context.setStudents
     const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
 
-    // console.log('attendence ==>', [attendance])
 
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
         e.preventDefault()
-        const newStudent = { ...student, first_name: firstName, last_name: lastName, class_period: parseInt(classPeriod) }
+        const newStudent = { ...student, first_name: firstName, last_name: lastName }
+        // insert above ^ class_period: parseInt(classPeriod)
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
         console.log('EditStudent', newStudent)
@@ -28,13 +28,10 @@ export default function EditStudent(props) {
     }
 
     const handleClickDelete = () => {
-        // e.preventDefault()
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
-        // console.log("deleted", deleted)
         setStudents(deleted)
-        props.history.push("/add-period")
-        // console.log("student", student)
+        // props.history.push("/add-period")
     }
     console.log(student)
 
@@ -57,12 +54,12 @@ export default function EditStudent(props) {
                         <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} type="text" name='last-name' id='last-name' />
                     </div>
                     {/* View student attendance in calendar */}
-                    <div>
+                    {/* <div>
                         <article className="button-section">
                             <span className="custom-dropdown big">
-                                <select onChange={classPeriodChange} type="number">
+                                <select onChange={classPeriodChange} type="number"> */}
                                     {/* dropdown period defaults as students information */}
-                                    <option value=""> {student.class_period} </option>
+                                    {/* <option value=""> {student.class_period} </option>
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
@@ -73,7 +70,7 @@ export default function EditStudent(props) {
 
                             </span>
                         </article>
-                    </div>
+                    </div> */}
 
                     {/* submit changes to student data 
                     send user to addPeriod 

@@ -24,7 +24,7 @@ export default function App(props) {
         periods,
         students,
         setStudents,
-        setPeriods,
+        // setPeriods,
         handleClickDelete
     }
 
@@ -41,9 +41,9 @@ export default function App(props) {
             <div>
                 <nav role="navigation">
                     <Link to="/"> Present </Link>
-                    <br />
-                    <Link to="/add-student"> Student |</Link>
-                    <Link to="/add-period">| Period </Link>
+                    {/* <br /> */}
+                    {/* <Link to="/add-student"> Student |</Link> */}
+                    {/* <Link to="/add-period">| Period </Link> */}
                 </nav>
 
                 <Route exact path="/" component={Home} />
