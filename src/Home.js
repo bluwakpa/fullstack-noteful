@@ -12,7 +12,7 @@ export default function App() {
                 <p>Take attendance of your classroom and create new student profiles.</p>
             </section>
             <section className="button-section">
-                <Link to="/attendance/1"><button> Take Attendance </button></Link>
+                <Link to="/attendance"><button> Take Attendance </button></Link>
             </section>
         </main>
     );

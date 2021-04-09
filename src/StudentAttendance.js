@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 
 
 export default function StudentAttendance({ student, updateStudents, checked, setChecked }) {
-    const [present, setPresent] = useState(student.present);
+    const [attendance, setAttendance] = useState(student.attendance);
     const [value, onChange] = useState(new Date());
     
     const context = useContext(ApiContext)
     const {setStudents, students} = context
 
     const handleChange = (e) => {
-        // setPresent(e.target.checked)
-        student.present = e.target.checked
+        // setAttendance(e.target.checked)
+        student.attendance = e.target.checked
         console.log(student)
         // setStudents(students)
         updateStudents(student)
@@ -20,13 +20,13 @@ export default function StudentAttendance({ student, updateStudents, checked, se
 
     return (
         <div>
-            <label htmlFor="present">
+            <label htmlFor="attendance">
                 <Link to={`/edit-student/${student.id}`}>
                     <button type='submit'>
                         <span>{student.last_name}, {student.first_name}</span>
                     </button>
                 </Link>
-                <input onChange={(e) => setChecked(!checked)} type="checkbox" name="present" id="present" value={checked} className="present"></input>
+                <input onChange={(e) => setChecked(!checked)} type="checkbox" name="attendance" id="attendance" value={checked} className="attendance"></input>
             </label>
         </div>
     )

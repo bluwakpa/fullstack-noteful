@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import data from './data';
 import { Route, Link } from 'react-router-dom';
 import './index.css';
-import AddPeriod from './AddPeriod';
 import Attendance from './Attendance';
 import AddStudent from './AddStudent';
 import EditStudent from './EditStudent';
@@ -24,18 +23,12 @@ export default function App(props) {
         periods,
         students,
         setStudents,
-        // setPeriods,
         handleClickDelete
     }
 
-    // const handleAddPeriod = period => {
-    //     setPeriods([
-    //         ...periods,
-    //         period
-    //     ])
-    // }
-
     const handleAddStudent = students
+
+    
     return (
         <ApiContext.Provider value={value}>
             <div>
@@ -43,12 +36,10 @@ export default function App(props) {
                     <Link to="/"> Present </Link>
                     {/* <br /> */}
                     {/* <Link to="/add-student"> Student |</Link> */}
-                    {/* <Link to="/add-period">| Period </Link> */}
                 </nav>
 
                 <Route exact path="/" component={Home} />
-                <Route path="/add-period" component={AddPeriod} />
-                <Route path="/attendance/:period" component={Attendance} />
+                <Route path="/attendance" component={Attendance} />
                 <Route path="/add-student" component={AddStudent} />
                 <Route path="/student-calendar/:id" component={StudentCalendar} />
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
