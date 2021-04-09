@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
+import { differenceInCalendarDays, addDays } from 'date-fns';
 
 export default function Attendance(props) {
     const period = (props.match.params.period)
@@ -29,6 +30,16 @@ export default function Attendance(props) {
         props.history.push(`/`)
     }
 
+    function tileClassPresent({ date, view }) {
+        let today = new Date()
+        if (view === 'month') {
+            if (differenceInCalendarDays(today, date) === 0) {
+                console.log('check', date)
+                return 'myClassPresent';
+            }
+        }
+    }
+
     console.log(context.students)
     return (
         <main role="main">
@@ -37,7 +48,7 @@ export default function Attendance(props) {
             </header>
 
             <article className="form-section">
-                <label className="dream-date-label" htmlFor="date-month">Date: {data.modified} </label>
+                <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label>
             </article>
 
             <section className="form-section dream-type-section">

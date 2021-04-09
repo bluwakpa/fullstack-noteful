@@ -22,13 +22,12 @@ export default function StudentCalendar({ match }) {
     function tileClassPresent({ date, view }) {
         let today = new Date()
         if (view === 'month') {
-          if (differenceInCalendarDays(today, date) === 0) {
-              console.log('check', date)
-              
-            return 'myClassPresent';
-          }
+            if (differenceInCalendarDays(today, date) === 0) {
+                console.log('check', date)
+                return 'myClassPresent';
+            }
         }
-      }
+    }
 
     return (
         <main role="main">
@@ -36,6 +35,7 @@ export default function StudentCalendar({ match }) {
                 <h2>Student Calendar</h2>
                 <h3>
                     {student.first_name} {student.last_name} <br />
+                    {/* List Group Bootstrap */}
                 </h3>
 
                 <div>

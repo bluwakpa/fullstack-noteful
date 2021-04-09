@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom'
 
 export default function EditStudent(props) {
     const context = useContext(ApiContext)
-    console.log(context.student) // setState students to undefined, or updateStudents etc
+    console.log('context', context)
+    console.log('context.students', context.students) // setState students to undefined, or updateStudents etc
     const student = context.students.find(student => student.id === props.match.params.id);
+    console.log('student', student)
     const studentIndex = context.students.indexOf(student)
+    console.log('student.first_name', student.first_name)
     const [firstName, setFirstName] = useState(student.first_name)
     const [lastName, setLastName] = useState(student.last_name)
     const firstNameChange = function (e) { setFirstName(e.target.value) }
@@ -24,16 +27,17 @@ export default function EditStudent(props) {
         const newStudent = { ...student, first_name: firstName, last_name: lastName }
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
-        console.log('EditStudent', newStudent)
+        console.log('newStudent', newStudent)
         setStudents(newStudents)
     }
 
     const handleClickDelete = () => {
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
+        console.log('handleClickDelete student', student)
         setStudents(deleted)
     }
-    console.log(student)
+    
 
     return (
         <main role="main">

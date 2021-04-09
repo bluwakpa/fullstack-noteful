@@ -5,7 +5,6 @@ export default {
             last_name: "Garcia",
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee1",
             modified: "2021-01-03T00:00:00.000Z",
-            // present: false,
             attendance: {
                 "2021-01-03": false,
                 "2021-01-04": false
@@ -16,7 +15,6 @@ export default {
             last_name: "Wang",
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee2",
             modified: "2021-01-03T00:00:00.000Z",
-            // present: false,
             attendance: {
                 "2021-01-03": false,
                 "2021-01-04": false
@@ -27,7 +25,6 @@ export default {
             last_name: "Kumar",
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee3",
             modified: "2021-01-03T00:00:00.000Z",
-            // present: false,
             attendance: {
                 "2021-01-03": false,
                 "2021-01-04": false
@@ -38,7 +35,6 @@ export default {
             last_name: "Hernandez",
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee4",
             modified: "2021-01-03T00:00:00.000Z",
-            // present: false,
             attendance: {
                 "2021-01-03": false,
                 "2021-01-04": false
