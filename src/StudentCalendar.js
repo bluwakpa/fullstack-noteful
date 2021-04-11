@@ -9,9 +9,11 @@ export default function StudentCalendar({ match }) {
     const context = useContext(ApiContext);
     console.log('match', match)
     const student = context.students.find(student => student.id === match.params.id);
+    const listItems = student.attendance;
+    console.log('student.attendance', student.attendance)
     const students = context.students;
 
-    console.log(student)
+    console.log('student', student)
 
     const updateStudents = (newStudent) => {
         context.setStudents([...context.students, newStudent])
@@ -58,9 +60,9 @@ export default function StudentCalendar({ match }) {
 
 
                 <div>
-                    {/* <ul>
+                    <ul>
                         {listItems}
-                    </ul> */}
+                    </ul>
                 </div>
             </header>
         </main>
