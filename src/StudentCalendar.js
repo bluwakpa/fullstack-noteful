@@ -7,13 +7,20 @@ import 'react-calendar/dist/Calendar.css';
 export default function StudentCalendar({ match }) {
     const [value, onChange] = useState(new Date());
     const context = useContext(ApiContext);
+    console.log('match', match)
     const student = context.students.find(student => student.id === match.params.id);
+    const students = context.students;
 
     console.log(student)
 
     const updateStudents = (newStudent) => {
         context.setStudents([...context.students, newStudent])
     }
+
+    // const listItems = students.map((student) =>
+    //     <StudentCalendar key={student.toString()}
+    //         value={student} />
+    // );
 
     function isSameDay(student, match) {
         return differenceInCalendarDays(student, match) === 0;
@@ -28,6 +35,8 @@ export default function StudentCalendar({ match }) {
             }
         }
     }
+
+
 
     return (
         <main role="main">
@@ -46,11 +55,13 @@ export default function StudentCalendar({ match }) {
                     />
 
                 </div>
-                {/* <div>
-                    <li> {student.first_name} </li>
-                    <li> {student.last_name} </li>
-                    <li> {student.attendance} </li>
-                </div> */}
+
+
+                <div>
+                    {/* <ul>
+                        {listItems}
+                    </ul> */}
+                </div>
             </header>
         </main>
     );
