@@ -15,15 +15,17 @@ export default function EditStudent(props) {
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
     const setStudents = context.setStudents
-    const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
-    const updateStudents = (newStudent) => {
-        context.setStudents([...context.students, newStudent])
-    }
+    console.log('context.setStudents', context.setStudents)
+    // const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
+    // const updateStudents = (newStudent) => {
+    //     context.setStudents([...context.students, newStudent])
+    // }
 
 
     const onSubmit = (e) => {
         {/* insert fetch and then for db */ }
         e.preventDefault()
+        console.log('inside handleClickDelete')
         const newStudent = { ...student, first_name: firstName, last_name: lastName }
         const newStudents = [...context.students]
         newStudents[studentIndex] = newStudent
@@ -31,11 +33,13 @@ export default function EditStudent(props) {
         setStudents(newStudents)
     }
 
-    const handleClickDelete = () => {
+    const handleClickDelete = (e) => {
+        e.preventDefault()
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
         console.log('handleClickDelete student', student)
         setStudents(deleted)
+        props.history.push(`/attendance`)
     }
     
 

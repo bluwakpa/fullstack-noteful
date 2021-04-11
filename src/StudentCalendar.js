@@ -44,7 +44,13 @@ export default function StudentCalendar({ match }) {
                         value={value}
                         tileClassName={tileClassPresent}
                     />
+
                 </div>
+                {/* <div>
+                    <li> {student.first_name} </li>
+                    <li> {student.last_name} </li>
+                    <li> {student.attendance} </li>
+                </div> */}
             </header>
         </main>
     );
