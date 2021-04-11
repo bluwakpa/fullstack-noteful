@@ -9,24 +9,29 @@ export default function StudentCalendar({ match }) {
     const context = useContext(ApiContext);
     console.log('match', match)
     const student = context.students.find(student => student.id === match.params.id);
-    const listItems = student.attendance;
+    // const listItems = (student) => {
+    //     let student = student.attendance;
+    //     listItems.toString();
+    // };
+    
     console.log('student.attendance', student.attendance)
     const students = context.students;
 
     console.log('student', student)
 
-    const updateStudents = (newStudent) => {
-        context.setStudents([...context.students, newStudent])
-    }
+    // const updateStudents = (newStudent) => {
+    //     context.setStudents([...context.students, newStudent])
+    // }
 
-    // const listItems = students.map((student) =>
-    //     <StudentCalendar key={student.toString()}
-    //         value={student} />
-    // );
+    const listItems = students.map((student) =>
+        <StudentCalendar key={student.toString()}
+            value={student} />
+    );
+    console.log('listItems', listItems)
 
-    function isSameDay(student, match) {
-        return differenceInCalendarDays(student, match) === 0;
-    }
+    // function isSameDay(student, match) {
+    //     return differenceInCalendarDays(student, match) === 0;
+    // };
 
     function tileClassPresent({ date, view }) {
         let today = new Date()
@@ -60,9 +65,9 @@ export default function StudentCalendar({ match }) {
 
 
                 <div>
-                    <ul>
+                    {/* <ul>
                         {listItems}
-                    </ul>
+                    </ul> */}
                 </div>
             </header>
         </main>
