@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom';
 import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
-import { differenceInCalendarDays, addDays } from 'date-fns';
+// import { differenceInCalendarDays } from 'date-fns';
 
 export default function Attendance(props) {
-    const period = (props.match.params.period)
     const context = useContext(ApiContext)
     const [checked, setChecked] = useState({});
-
-
     const updateStudents = (newStudent) => {
-        console.log(context.students.indexOf(newStudent))
+        // console.log(context.students.indexOf(newStudent))
         const index = context.students.indexOf(newStudent)
         context.students[index] = newStudent
         context.setStudents([...context.students])
@@ -21,26 +18,15 @@ export default function Attendance(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
-            console.log(student)
+            // console.log(student)
             student.attendance["2021-01-03"] = checked[student.id] || false
             return student
         })
         context.setStudents(updatedStudents)
-
         props.history.push(`/`)
     }
+    // console.log(context.students)
 
-    function tileClassPresent({ date, view }) {
-        let today = new Date()
-        if (view === 'month') {
-            if (differenceInCalendarDays(today, date) === 0) {
-                console.log('check', date)
-                return 'myClassPresent';
-            }
-        }
-    }
-
-    console.log(context.students)
 
     return (
         <main role="main">
@@ -65,7 +51,7 @@ export default function Attendance(props) {
                 {/* submit the attendance to student data */}
             </form>
             <section className="button-section">
-                <Link to="/"><button type="submit">Submit</button></Link>
+                <Link to="/students-history"><button type="submit">Submit</button></Link>
                 <br />
                 <Link to="/add-student"><button>+ Student </button></Link>
             </section>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
 
@@ -41,33 +41,32 @@ export default function EditStudent(props) {
         setStudents(deleted)
         props.history.push(`/attendance`)
     }
-    
+
 
     return (
         <main role="main">
-            <header role="banner">
-
-                <h2>Edit Student</h2>
-                {/* student ID to ensure not deleting wrong student */}
-            </header>
-            <section>
-
-                <form className='signup-form' onSubmit={onSubmit} >
-                    <div>
-                        {/* Text box defaults as students information based on id */}
-                        <label for="first-name">First name</label>
-                        <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} type="text" name='first-name' id='first-name' />
-                    </div>
-                    <div>
-                        <label for="last-name">Last name</label>
-                        <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} type="text" name='last-name' id='last-name' />
-                    </div>
-
+            <form className='signup-form' onSubmit={onSubmit} >
+                <header role="banner">
+                    <h2>Edit Student</h2>
+                    {/* student ID to ensure not deleting wrong student */}
+                </header>
+                <div>
+                    {/* Text box defaults as students information based on id */}
+                    <label for="first-name">First name</label>
+                    <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} type="text" name='first-name' id='first-name' />
+                </div>
+                <div>
+                    <label for="last-name">Last name</label>
+                    <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} type="text" name='last-name' id='last-name' />
+                </div>
+                <section>
                     {/* submit changes to student data 
                     send user to addPeriod 
                     message: your student has been updated */}
 
-                    <button type='submit'> Update </button>
+                    <Link to={`/attendance`}>
+                        <button type='submit'> Update </button>
+                    </Link>
 
                     {/* delete student from class 
                     alert user
@@ -83,12 +82,11 @@ export default function EditStudent(props) {
                     {/* view filtered student attendance history 
                     send user to calendar */}
 
-                    <Link to={`/student-calendar/${student.id}`}>
+                    <Link to={`/student-history/${student.id}`}>
                         <button type='submit'> View </button>
                     </Link>
-
-                </form>
-            </section>
+                </section>
+            </form>
         </main>
     );
 }

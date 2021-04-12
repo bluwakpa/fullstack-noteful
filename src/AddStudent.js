@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
-import ApiContext from './ApiContext'
+import ApiContext from './ApiContext';
 import { v4 as uuidv4 } from 'uuid';
+import { Link } from 'react-router-dom';
 
 export default function AddStudent(props) {
     const context = useContext(ApiContext)
     const init = {
         firstName: "",
         lastName: "",
-        // period: ""
     }
     const [formData, setFormData] = useState(init)
     const handleChange = (e) => {
@@ -34,24 +34,26 @@ export default function AddStudent(props) {
     }
     return (
         <main role="main">
+            <form className='signup-form' onSubmit={onSubmit}>
             <header role="banner">
                 <h2>Add Student</h2>
             </header>
-            <section className="student">
-                <form className='signup-form' onSubmit={onSubmit}>
+            {/* <section className="student"> */}
+                
                     <div>
                         <label htmlFor="first-name">First name</label>
-                        <input placeholder='First Name' type="text" name='firstName' id='first-name' value={formData.firstName} onChange={handleChange}/>
+                        <input required='' type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange}/>
                     </div>
                     <div>
                         <label htmlFor="last-name">Last name</label>
-                        <input type="text" name='lastName' id='last-name' placeholder='Last Name' value={formData.lastName} onChange={handleChange}/>
+                        <input required='' type="text" placeholder='Last Name' name='lastName' id='last-name'  value={formData.lastName} onChange={handleChange}/>
                         <section className="button-section">
-                            <button type='submit' >Add</button>
+                            <button type='submit' >Submit</button>
+                            <Link to="/attendance"><button> Cancel </button></Link>
                         </section>
                     </div>
                 </form>
-            </section>
+            {/* </section> */}
         </main>
     );
 }

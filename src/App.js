@@ -7,10 +7,10 @@ import AddStudent from './AddStudent';
 import EditStudent from './EditStudent';
 import Home from './Home';
 import ApiContext from './ApiContext';
-import StudentCalendar from './StudentCalendar'
+import StudentHistory from './StudentHistory';
+import StudentsHistory from './StudentsHistory'
 
 export default function App(props) {
-    const [periods, setPeriods] = useState(data.periods)
     const [students, setStudents] = useState(data.students)
     // const [attendance, setAttendance] = useState(data.attendance)
 
@@ -20,13 +20,10 @@ export default function App(props) {
         console.log("students", students)
     }
     const value = {
-        periods,
         students,
         setStudents,
         handleClickDelete
     }
-
-    const handleAddStudent = students
 
 
     return (
@@ -34,15 +31,13 @@ export default function App(props) {
             <div>
                 <nav role="navigation">
                     <Link to="/"><h1>Present</h1></Link>
-                    {/* <br />
-                    <h2> Home </h2> */}
-                    {/* <Link to="/add-student"> Student |</Link> */}
                 </nav>
 
                 <Route exact path="/" component={Home} />
                 <Route path="/attendance" component={Attendance} />
                 <Route path="/add-student" component={AddStudent} />
-                <Route path="/student-calendar/:id" component={StudentCalendar} />
+                <Route path="/student-history/:id" component={StudentHistory} />
+                <Route path="/students-history" component={StudentsHistory} />
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
             </div>
