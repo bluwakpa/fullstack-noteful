@@ -41,36 +41,33 @@ export default function Attendance(props) {
     }
 
     console.log(context.students)
+
     return (
         <main role="main">
             <header>
-                <h1>Attendance</h1>
+                <h2>Student Attendance</h2>
             </header>
-
             <article className="form-section">
                 <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label>
             </article>
-
-            <section className="form-section dream-type-section">
-                <h2>Students</h2>
-                <form onSubmit={handleSubmit}>
-                    {/* student names Link to EditStudent 
+            <form onSubmit={handleSubmit}>
+                {/* student names Link to EditStudent 
                     check attendance by clicking name
                     hover and focus
                     add class to show its selected
                     add pencil to left of name to edit student
                     accessibility by altering setCheck w CSS to view as button*/}
-                    {
-                        context.students.map((student) => {
-                            return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked({ ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
-                        })
-                    }
-                    {/* submit the attendance to student data */}
-                    <button type="submit">Submit</button>
-                </form>
-                <section className="button-section">
-                    <Link to="/add-student"><button>Add Student </button></Link>
-                </section>
+                {
+                    context.students.map((student) => {
+                        return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked({ ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
+                    })
+                }
+                {/* submit the attendance to student data */}
+            </form>
+            <section className="button-section">
+                <Link to="/"><button type="submit">Submit</button></Link>
+                <br />
+                <Link to="/add-student"><button>+ Student </button></Link>
             </section>
         </main>
     );

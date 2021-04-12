@@ -13,7 +13,7 @@ export default function StudentCalendar({ match }) {
     //     let student = student.attendance;
     //     listItems.toString();
     // };
-    
+
     console.log('student.attendance', student.attendance)
     const students = context.students;
 
@@ -43,8 +43,6 @@ export default function StudentCalendar({ match }) {
         }
     }
 
-
-
     return (
         <main role="main">
             <header role="banner">
@@ -62,8 +60,16 @@ export default function StudentCalendar({ match }) {
                     />
 
                 </div>
-
-
+                <div>
+                    {
+                        Object.entries(student.attendance).map(([date, present]) => (
+                            <div>
+                            <p>{date}</p>
+                            <p>{present? "present": "absent"}</p>
+                            </div>
+                        ))
+                    }
+                </div>
                 <div>
                     {/* <ul>
                         {listItems}

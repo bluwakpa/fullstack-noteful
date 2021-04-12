@@ -28,13 +28,14 @@ export default function App(props) {
 
     const handleAddStudent = students
 
-    
+
     return (
         <ApiContext.Provider value={value}>
             <div>
                 <nav role="navigation">
-                    <Link to="/"> Present </Link>
-                    {/* <br /> */}
+                    <Link to="/"><h1>Present</h1></Link>
+                    {/* <br />
+                    <h2> Home </h2> */}
                     {/* <Link to="/add-student"> Student |</Link> */}
                 </nav>
 
@@ -44,8 +45,8 @@ export default function App(props) {
                 <Route path="/student-calendar/:id" component={StudentCalendar} />
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
-                <footer role="content-info">Copyright 2021</footer>
             </div>
+            <footer role="content-info">Copyright 2021</footer>
         </ApiContext.Provider>
     );
 }

@@ -21,11 +21,11 @@ export default function StudentAttendance({ student, updateStudents, checked, se
     return (
         <div>
             <label htmlFor="attendance">
-                <Link to={`/edit-student/${student.id}`}>
-                    <button type='submit'>
+                {/* <Link to={`/edit-student/${student.id}`}> */}
+                    {/* <button type='submit'> */}
                         <span>{student.last_name}, {student.first_name}</span>
-                    </button>
-                </Link>
+                    {/* </button> */}
+                {/* </Link> */}
                 <input onChange={(e) => setChecked(!checked)} type="checkbox" name="attendance" id="attendance" value={checked} className="attendance"></input>
             </label>
         </div>
