@@ -1,40 +1,39 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
+// import StudentAttendance from './StudentAttendance'
 
-export default function StudentsHistory(props) {
-    const [value, onChange] = useState(new Date());
+export default function StudentsHistory() {
     const context = useContext(ApiContext);
-    const student = context.students
-    console.log('student.attendance', student.attendance)
-    const students = context.students;
-
-    console.log('student', student)
-
-    const listItems = students.map((student) =>
-        <StudentsHistory key={student.toString()}
-            value={student} />
-    );
-    console.log('listItems', listItems)
+    const students = context.students
 
 
     return (
         <main role="main">
             <header role="banner">
                 <h2>Students History</h2>
-                <h3>
-                    {student.first_name} {student.last_name} <br />
-                </h3>
-                <div>
-                    {
-                        Object.entries(student.attendance).map(([date, present]) => (
-                            <div>
-                                <p>{date}</p>
-                                <p>{present ? "Present" : "Absent"}</p>
-                            </div>
-                        ))
-                    }
+                {students.map(student => (
+                    <div>
+        
+                    {/* <h3>
+                        {student.first_name} {student.last_name} <br />
+                    </h3> */}
+
+                    <div>
+                        {
+                            Object.entries(student.attendance).map(([name, date, present]) => (
+                                
+                                <div>
+                                    <p>{name}</p>
+                                    <p>{date}</p>
+                                    <p>{present ? "Present" : "Absent"}</p>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
+                ))}
+                
             </header>
             <section className="button-section">
                 <Link to="/attendance"><button> Attendance </button></Link>

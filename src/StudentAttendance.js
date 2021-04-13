@@ -25,8 +25,6 @@ export default function StudentAttendance({ student, updateStudents, checked, se
                     <button type='submit'> E </button>
                 </Link>
                 <span>{student.last_name}, {student.first_name}</span>
-
-
                 <input onChange={(e) => setChecked(!checked)} type="checkbox" name="attendance" id="attendance" value={checked} className="attendance"></input>
             </label>
         </div>
