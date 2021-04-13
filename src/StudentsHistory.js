@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import ApiContext from './ApiContext';
-import { Link } from 'react-router-dom'
-// import StudentAttendance from './StudentAttendance'
+import { Link, useHistory } from 'react-router-dom'
+import Attendance, { updateStudents, handleSubmit } from './Attendance'
 
-export default function StudentsHistory() {
+export default function StudentsHistory(props) {
+    const history = useHistory();
     const context = useContext(ApiContext);
     const students = context.students
 

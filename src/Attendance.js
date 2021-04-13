@@ -3,29 +3,26 @@ import { Link } from 'react-router-dom';
 import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
-// import { differenceInCalendarDays } from 'date-fns';
 
 export default function Attendance(props) {
     const context = useContext(ApiContext)
     const [checked, setChecked] = useState({});
     const updateStudents = (newStudent) => {
-        // console.log(context.students.indexOf(newStudent))
         const index = context.students.indexOf(newStudent)
         context.students[index] = newStudent
         context.setStudents([...context.students])
+        props.history.push(`/students-history`)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
-            // console.log(student)
             student.attendance["2021-01-03"] = checked[student.id] || false
             return student
         })
         context.setStudents(updatedStudents)
-        props.history.push(`/`)
+        props.history.push(`/students-history`)
     }
-    // console.log(context.students)
 
 
     return (
