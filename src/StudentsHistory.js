@@ -16,18 +16,15 @@ export default function StudentsHistory(props) {
                 {students.map(student => (
                     <div>
         
-                    {/* <h3>
+                    <h3>
                         {student.first_name} {student.last_name} <br />
-                    </h3> */}
+                    </h3>
 
                     <div>
                         {
-                            Object.entries(student.attendance).map(([name, date, present]) => (
-                                
+                            Object.entries(student.attendance).map(([date, present]) => (
                                 <div>
-                                    <p>{name}</p>
-                                    <p>{date}</p>
-                                    <p>{present ? "Present" : "Absent"}</p>
+                                    <p>{date}: {present ? "Present" : "Absent"}</p>
                                 </div>
                             ))
                         }
