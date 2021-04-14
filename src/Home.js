@@ -8,7 +8,7 @@ export default function App() {
                 <main role="main" />
                 <header role="banner">
                     <h2> Home </h2>
-                    <p> Take attendance of your classroom and create new student profiles. </p>
+                    <p> Take attendance of your classroom and edit student profiles. </p>
                 </header>
                 <section className="button-section">
                     <Link to="/attendance"><button> Start </button></Link>

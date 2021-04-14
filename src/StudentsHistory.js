@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import ApiContext from './ApiContext';
 import { Link, useHistory } from 'react-router-dom'
-import Attendance, { updateStudents, handleSubmit } from './Attendance'
+import Attendance from './Attendance'
+import EditStudent from './EditStudent'
 
 export default function StudentsHistory(props) {
     const history = useHistory();

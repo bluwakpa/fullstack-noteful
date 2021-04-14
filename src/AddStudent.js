@@ -25,8 +25,8 @@ export default function AddStudent(props) {
             last_name: formData.lastName,
             id: uuidv4(),
             attendance: {
-                "2021-01-03": false,
-                "2021-01-04": false
+                "Today": false,
+                "Yesterday": false
             }
         }
         context.setStudents([...context.students, newStudent])

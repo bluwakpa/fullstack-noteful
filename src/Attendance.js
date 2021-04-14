@@ -7,6 +7,8 @@ import StudentAttendance from './StudentAttendance'
 export default function Attendance(props) {
     const context = useContext(ApiContext)
     const [checked, setChecked] = useState({});
+    // props or context.students set object key to student name and value if present Today, student.id set to true 1:true, 2:false
+
     const updateStudents = (newStudent) => {
         const index = context.students.indexOf(newStudent)
         context.students[index] = newStudent
@@ -17,13 +19,15 @@ export default function Attendance(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
-            student.attendance["2021-01-03"] = checked[student.id] || false
+            student.attendance["Today"] = checked[student.id] || false
+            console.log('updatedStudents', updatedStudents)
             return student
         })
         context.setStudents(updatedStudents)
         props.history.push(`/students-history`)
     }
 
+    console.log('context.students', context.students)
 
     return (
         <main role="main">
@@ -46,12 +50,13 @@ export default function Attendance(props) {
                     })
                 }
                 {/* submit the attendance to student data */}
+
+                <section className="button-section">
+                    <button type="submit">Submit</button>
+                    <br />
+                    <Link to="/add-student"><button>+ Student </button></Link>
+                </section>
             </form>
-            <section className="button-section">
-                <Link to="/students-history"><button type="submit">Submit</button></Link>
-                <br />
-                <Link to="/add-student"><button>+ Student </button></Link>
-            </section>
         </main>
     );
 }

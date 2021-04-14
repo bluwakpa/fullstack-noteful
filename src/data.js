@@ -6,8 +6,8 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee1",
             modified: "2021-01-03T00:00:00.000Z",
             attendance: {
-                "2021-01-03": false,
-                "2021-01-04": false
+                "Today": false,
+                "Yesterday": false
             }  
         },
         {
@@ -16,8 +16,8 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee2",
             modified: "2021-01-03T00:00:00.000Z",
             attendance: {
-                "2021-01-03": false,
-                "2021-01-04": false
+                "Today": false,
+                "Yesterday": true
             } 
         },
         {
@@ -26,8 +26,8 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee3",
             modified: "2021-01-03T00:00:00.000Z",
             attendance: {
-                "2021-01-03": false,
-                "2021-01-04": false
+                "Today": false,
+                "Yesterday": true
             } 
         },
         {
@@ -36,8 +36,8 @@ export default {
             id: "d19cc3dc-85ae-4df6-a3cd-089aec767ee4",
             modified: "2021-01-03T00:00:00.000Z",
             attendance: {
-                "2021-01-03": false,
-                "2021-01-04": false
+                "Today": false,
+                "Yesterday": true
             } 
         },
     ]

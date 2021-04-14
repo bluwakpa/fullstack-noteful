@@ -15,7 +15,6 @@ export default function EditStudent(props) {
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
     const setStudents = context.setStudents
-    console.log('context.setStudents', context.setStudents)
     // const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
     // const updateStudents = (newStudent) => {
     //     context.setStudents([...context.students, newStudent])
@@ -31,6 +30,7 @@ export default function EditStudent(props) {
         newStudents[studentIndex] = newStudent
         console.log('newStudent', newStudent)
         setStudents(newStudents)
+        props.history.push(`/attendance`)
     }
 
     const handleClickDelete = (e) => {
@@ -64,9 +64,7 @@ export default function EditStudent(props) {
                     send user to addPeriod 
                     message: your student has been updated */}
 
-                    <Link to={`/attendance`}>
-                        <button type='submit'> Update </button>
-                    </Link>
+                    <button type='submit'> Update </button>
 
                     {/* delete student from class 
                     alert user
