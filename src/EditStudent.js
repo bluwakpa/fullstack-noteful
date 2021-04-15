@@ -4,21 +4,15 @@ import { Link } from 'react-router-dom'
 
 export default function EditStudent(props) {
     const context = useContext(ApiContext)
-    console.log('context', context)
-    console.log('context.students', context.students) // setState students to undefined, or updateStudents etc
+    console.log('context.students', context.students)
     const student = context.students.find(student => student.id === props.match.params.id);
     console.log('student', student)
     const studentIndex = context.students.indexOf(student)
-    console.log('student.first_name', student.first_name)
     const [firstName, setFirstName] = useState(student.first_name)
     const [lastName, setLastName] = useState(student.last_name)
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
     const setStudents = context.setStudents
-    // const [attendance, setAttendence] = useState({id: '', modified: new Date(), present: []});
-    // const updateStudents = (newStudent) => {
-    //     context.setStudents([...context.students, newStudent])
-    // }
 
 
     const onSubmit = (e) => {
@@ -78,7 +72,7 @@ export default function EditStudent(props) {
                     > Delete </button>
 
                     {/* view filtered student attendance history 
-                    send user to calendar */}
+                    send user to student history */}
 
                     <Link to={`/student-history/${student.id}`}>
                         <button type='submit'> View </button>

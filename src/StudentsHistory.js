@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import ApiContext from './ApiContext';
 import { Link, useHistory } from 'react-router-dom'
-import Attendance from './Attendance'
-import EditStudent from './EditStudent'
+
 
 export default function StudentsHistory(props) {
     const history = useHistory();
@@ -16,23 +15,23 @@ export default function StudentsHistory(props) {
                 <h2>Students History</h2>
                 {students.map(student => (
                     <div>
-        
-                    <h3>
-                        {student.first_name} {student.last_name} <br />
-                    </h3>
 
-                    <div>
-                        {
-                            Object.entries(student.attendance).map(([date, present]) => (
-                                <div>
-                                    <p>{date}: {present ? "Present" : "Absent"}</p>
-                                </div>
-                            ))
-                        }
+                        <h3>
+                            {student.first_name} {student.last_name} <br />
+                        </h3>
+
+                        <div>
+                            {
+                                Object.entries(student.attendance).map(([date, present]) => (
+                                    <div>
+                                        <p>{date}: {present ? "Present" : "Absent"}</p>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
-                </div>
                 ))}
-                
+
             </header>
             <section className="button-section">
                 <Link to="/attendance"><button> Attendance </button></Link>

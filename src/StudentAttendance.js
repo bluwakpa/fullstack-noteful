@@ -3,24 +3,11 @@ import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
 
 
-export default function StudentAttendance({ student, updatedStudents, checked, setChecked }) {
-    const [attendance, setAttendance] = useState(student.attendance);
-    // const [value, onChange] = useState(new Date());
+export default function StudentAttendance({ student, checked, setChecked }) {
 
-    const context = useContext(ApiContext)
-    // const { students, setStudents } = context
+    console.log('checked', checked, 'student.id', student.id)
 
-    // const handleChange = (e) => {
-    //     // setAttendance(e.target.checked)
-    //     student.attendance = e.target.checked
-    //     console.log(student)
-    //     // setStudents(students)
-    //     updateStudents(student)
-    // }
 
-    console.log('student.attendance.Today', student.attendance.Today)
-    // console.log('updatedStudents', updatedStudents)
-    console.log(checked, student.id)
     return (
         <div>
             <label htmlFor="attendance">
@@ -29,16 +16,10 @@ export default function StudentAttendance({ student, updatedStudents, checked, s
                 </Link>
                 <span>{student.last_name}, {student.first_name}</span>
                 {/* setStudents to new version of students */}
-                <input onChange={(e) => setChecked(!checked)} type="checkbox" name="attendance" id="attendance" checked={checked} className="attendance"></input>
-                {/* value={checked[student.id]} */}
+                <input onChange={(e) => setChecked(!checked)} type="checkbox" name="attendance"
+                    id="attendance" checked={checked} className="attendance">
+                </input>
             </label>
-            <div>
-            {Object.entries(student.attendance).map(([date, present]) => (
-                                <div>
-                                    <p>{date}: {present ? "Present" : "Absent"}</p>
-                                </div>
-                            ))}
-            </div>
         </div>
     )
 }

@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom';
 
 export default function AddStudent(props) {
     const context = useContext(ApiContext)
+
     const init = {
         firstName: "",
         lastName: "",
     }
+
     const [formData, setFormData] = useState(init)
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -32,28 +35,27 @@ export default function AddStudent(props) {
         context.setStudents([...context.students, newStudent])
         props.history.push(`/attendance/${formData.period}`)
     }
+
+
     return (
         <main role="main">
             <form className='signup-form' onSubmit={onSubmit}>
-            <header role="banner">
-                <h2>Add Student</h2>
-            </header>
-            {/* <section className="student"> */}
-                
-                    <div>
-                        <label htmlFor="first-name">First name</label>
-                        <input required='' type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange}/>
-                    </div>
-                    <div>
-                        <label htmlFor="last-name">Last name</label>
-                        <input required='' type="text" placeholder='Last Name' name='lastName' id='last-name'  value={formData.lastName} onChange={handleChange}/>
-                        <section className="button-section">
-                            <button type='submit' >Submit</button>
-                            <Link to="/attendance"><button> Cancel </button></Link>
-                        </section>
-                    </div>
-                </form>
-            {/* </section> */}
+                <header role="banner">
+                    <h2>Add Student</h2>
+                </header>
+                <div>
+                    <label htmlFor="first-name">First name</label>
+                    <input required='' type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange} />
+                </div>
+                <div>
+                    <label htmlFor="last-name">Last name</label>
+                    <input required='' type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
+                    <section className="button-section">
+                        <button type='submit' >Submit</button>
+                        <Link to="/attendance"><button> Cancel </button></Link>
+                    </section>
+                </div>
+            </form>
         </main>
     );
 }

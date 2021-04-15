@@ -3,13 +3,11 @@ import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom'
 
 export default function StudentHistory({ match }) {
-    // const [value, onChange] = useState(new Date());
     const context = useContext(ApiContext);
     console.log('match', match)
     const student = context.students.find(student => student.id === match.params.id);
     console.log('student.attendance', student.attendance)
     const students = context.students;
-
     console.log('student', student)
 
     const listItems = students.map((student) =>

@@ -39,6 +39,7 @@ export default function Attendance(props) {
     console.log('context.students', context.students)
     console.log('checked', checked)
 
+
     return (
         <main role="main">
             <header>
@@ -56,7 +57,8 @@ export default function Attendance(props) {
                     accessibility by altering setCheck w CSS to view as button*/}
                 {
                     context.students.map((student) => {
-                        return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked({ ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
+                        return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked(
+                            { ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
                     })
                 }
                 {/* submit the attendance to student data */}

@@ -12,13 +12,13 @@ import StudentsHistory from './StudentsHistory'
 
 export default function App(props) {
     const [students, setStudents] = useState(data.students)
-    // const [attendance, setAttendance] = useState(data.attendance)
 
     const handleClickDelete = (e) => {
         e.preventDefault()
         const students = props.match.params.id
         console.log("students", students)
     }
+    
     const value = {
         students,
         setStudents,
