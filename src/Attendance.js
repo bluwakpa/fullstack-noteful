@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import data from './data';
 import ApiContext from './ApiContext';
@@ -6,8 +6,17 @@ import StudentAttendance from './StudentAttendance'
 
 export default function Attendance(props) {
     const context = useContext(ApiContext)
-    const [checked, setChecked] = useState({});
-    // props or context.students set object key to student name and value if present Today, student.id set to true 1:true, 2:false
+    const initialCheck = {};
+    const [checked, setChecked] = useState(initialCheck);
+
+    console.log(initialCheck)
+    context.students.forEach(student => {
+        initialCheck[student.id] = student.attendance.Today
+    })
+
+    useEffect(() => {
+        setChecked(initialCheck)
+    }, [context.students])
 
     const updateStudents = (newStudent) => {
         const index = context.students.indexOf(newStudent)
@@ -20,14 +29,15 @@ export default function Attendance(props) {
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
             student.attendance["Today"] = checked[student.id] || false
-            console.log('updatedStudents', updatedStudents)
             return student
         })
         context.setStudents(updatedStudents)
+        console.log('updatedStudents', updatedStudents)
         props.history.push(`/students-history`)
     }
 
     console.log('context.students', context.students)
+    console.log('checked', checked)
 
     return (
         <main role="main">
