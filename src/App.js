@@ -30,6 +30,8 @@ export default function App({match}, props) {
         fetchData();
     }, []);
 
+    // const result = await axios.get()
+
     // const context = useContext(ApiContext);
     // const student = context.students.find(student => student.id === id);
     // console.log('student', student)
