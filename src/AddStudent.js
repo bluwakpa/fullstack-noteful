@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
+import config from './config';
 
 export default function AddStudent(props) {
     const context = useContext(ApiContext)
@@ -14,6 +15,7 @@ export default function AddStudent(props) {
     const [formData, setFormData] = useState(init)
 
     const handleChange = (e) => {
+        /* insert fetch and then for db */
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -21,19 +23,37 @@ export default function AddStudent(props) {
     }
 
     const onSubmit = (e) => {
-        {/* insert fetch and then for db */ }
+        /* insert fetch and then for db */
         e.preventDefault()
         const newStudent = {
             first_name: formData.firstName,
             last_name: formData.lastName,
-            id: uuidv4(),
+            // id: uuidv4(),
             attendance: {
                 "Today": false,
                 "Yesterday": false
             }
         }
-        context.setStudents([...context.students, newStudent])
-        props.history.push(`/attendance/${formData.period}`)
+        fetch(`${config.API_ENDPOINT}/api/students`, {
+            mode: 'cors',
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newStudent),
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
+            })
+            .then(newStudent => {
+                context.setStudents([...context.students, newStudent])
+                props.history.push(`/attendance/${formData.period}`)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
 

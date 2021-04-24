@@ -1,24 +1,41 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import data from './data';
+// import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
 
 export default function Attendance(props) {
-    const context = useContext(ApiContext)
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                // 'https://present-capstone.herokuapp.com',
+                'http://localhost:8000/api/students',
+            );
+            setStudents(result.data);
+            console.log('result.data', result.data)
+        };
+        fetchData();
+    }, []);
+
+    const context = useContext(ApiContext);
+    console.log('context', context)
     const initialCheck = {};
     const [checked, setChecked] = useState(initialCheck);
+    // const [students, setStudents] = useState(context.students);
+    console.log('students', students)
+    const student = context.students.find(student => student.id === Number(props.match.params.id));
+    console.log('props.match.params.id', props.match.params.id, 'student', student)
 
-    console.log(initialCheck)
     context.students.forEach(student => {
+        console.log('context.students', context.students, 'student', student)
         initialCheck[student.id] = student.attendance.Today
     })
 
-    useEffect(() => {
-        setChecked(initialCheck)
-    }, [context.students])
-
     const updateStudents = (newStudent) => {
+        /* insert fetch and then for db */
         const index = context.students.indexOf(newStudent)
         context.students[index] = newStudent
         context.setStudents([...context.students])
@@ -26,6 +43,7 @@ export default function Attendance(props) {
     }
 
     const handleSubmit = (e) => {
+        /* insert fetch and then for db */
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
             student.attendance["Today"] = checked[student.id] || false
@@ -39,6 +57,8 @@ export default function Attendance(props) {
     console.log('context.students', context.students)
     console.log('checked', checked)
 
+    
+
 
     return (
         <main role="main">
@@ -46,7 +66,7 @@ export default function Attendance(props) {
                 <h2>Student Attendance</h2>
             </header>
             <article className="form-section">
-                <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label>
+                {/* <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label> */}
             </article>
             <form onSubmit={handleSubmit}>
                 {/* student names Link to EditStudent 

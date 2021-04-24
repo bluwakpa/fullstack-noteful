@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import data from './data';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+// import data from './data';
 import { Route, Link } from 'react-router-dom';
 import './index.css';
 import Attendance from './Attendance';
@@ -8,22 +9,47 @@ import EditStudent from './EditStudent';
 import Home from './Home';
 import ApiContext from './ApiContext';
 import StudentHistory from './StudentHistory';
-import StudentsHistory from './StudentsHistory'
+import StudentsHistory from './StudentsHistory';
+// import config from './config';
 
-export default function App(props) {
-    const [students, setStudents] = useState(data.students)
+export default function App({match}, props) {
+    // const [students, setStudents] = useState(data.students);
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios(
+                // 'http://localhost:8000/api/students',
+                'https://present-capstone.herokuapp.com',
+                // 'postgresql://bluwakpa@localhost:5432/present'
+            );
+            setStudents(result.data);
+            console.log('result', result)
+            console.log('result.data', result.data)
+        };
+        fetchData();
+    }, []);
+
+    // const context = useContext(ApiContext);
+    // const student = context.students.find(student => student.id === id);
+    // console.log('student', student)
+
+    // const student = useEffect();
+    // console.log("student", student)
+    
 
     const handleClickDelete = (e) => {
+        /* insert fetch and then for db */
         e.preventDefault()
         const students = props.match.params.id
         console.log("students", students)
-    }
-    
+    };
+
     const value = {
         students,
         setStudents,
         handleClickDelete
-    }
+    };
 
 
     return (
@@ -41,7 +67,7 @@ export default function App(props) {
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
             </div>
-            <footer role="content-info">Copyright 2021</footer>
+            <footer role="contentinfo">Copyright 2021</footer>
         </ApiContext.Provider>
     );
 }

@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+// import data from './data';
 
 export default function EditStudent(props) {
+    console.log(props)
     const context = useContext(ApiContext)
     console.log('context.students', context.students)
-    const student = context.students.find(student => student.id === props.match.params.id);
+    const student = context.students.find(student => student.id === Number(props.match.params.id));
     console.log('student', student)
     const studentIndex = context.students.indexOf(student)
     const [firstName, setFirstName] = useState(student.first_name)
@@ -16,7 +18,7 @@ export default function EditStudent(props) {
 
 
     const onSubmit = (e) => {
-        {/* insert fetch and then for db */ }
+        /* insert fetch and then for db */ 
         e.preventDefault()
         console.log('inside handleClickDelete')
         const newStudent = { ...student, first_name: firstName, last_name: lastName }
@@ -28,10 +30,10 @@ export default function EditStudent(props) {
     }
 
     const handleClickDelete = (e) => {
+        /* insert fetch and then for db */
         e.preventDefault()
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
-        console.log('handleClickDelete student', student)
         setStudents(deleted)
         props.history.push(`/attendance`)
     }

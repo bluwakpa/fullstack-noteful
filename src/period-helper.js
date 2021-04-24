@@ -187,7 +187,7 @@ StudentAttendance
 
     // 3 Replace onSubmit
     const onSubmit = (e) => {
-      {/* insert fetch and .then for db */ }
+      /* insert fetch and .then for db */
       e.preventDefault()
       const newStudent = {
       //     ...student, // use all old student properties

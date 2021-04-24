@@ -1,4 +1,4 @@
-export default {
+const data = {
     "students": [
         {
             first_name: "Maria",
@@ -42,3 +42,5 @@ export default {
         },
     ]
 };
+
+export default data;
