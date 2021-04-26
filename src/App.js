@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 // import data from './data';
 import { Route, Link } from 'react-router-dom';
 import './index.css';
@@ -10,25 +10,42 @@ import Home from './Home';
 import ApiContext from './ApiContext';
 import StudentHistory from './StudentHistory';
 import StudentsHistory from './StudentsHistory';
-// import config from './config';
+import config from './config';
 
 export default function App({match}, props) {
     // const [students, setStudents] = useState(data.students);
     const [students, setStudents] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios(
-                // 'http://localhost:8000/api/students',
-                'https://present-capstone.herokuapp.com',
-                // 'postgresql://bluwakpa@localhost:5432/present'
-            );
-            setStudents(result.data);
-            console.log('result', result)
-            console.log('result.data', result.data)
-        };
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await axios(
+    //             // 'http://localhost:8000/api/students',
+    //             'https://present-capstone.herokuapp.com',
+    //             // 'postgresql://bluwakpa@localhost:5432/present'
+    //         );
+    //         setStudents(result.data);
+    //         console.log('result', result)
+    //         console.log('result.data', result.data)
+    //     };
+    //     fetchData();
+    // }, []);
+
+    useEffect(()=> {
+        Promise.all([
+          fetch(`${config.API_ENDPOINT}/api/students`),
+        ])
+        .then(res => {
+            if (!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+          })
+          .then(([students]) => {
+            setStudents(students)
+          })
+          .catch(error => {
+            console.error({ error })
+          })
+      },[])
 
     // const result = await axios.get()
 

@@ -28,11 +28,12 @@ export default function AddStudent(props) {
         const newStudent = {
             first_name: formData.firstName,
             last_name: formData.lastName,
+            // modified: new Date(),
             // id: uuidv4(),
-            attendance: {
-                "Today": false,
-                "Yesterday": false
-            }
+            // attendance: {
+            //     "Today": false,
+            //     "Yesterday": false
+            // }
         }
         fetch(`${config.API_ENDPOINT}/api/students`, {
             mode: 'cors',
