@@ -16,15 +16,13 @@ export default function App({match}, props) {
     const [students, setStudents] = useState([]);
 
     useEffect(()=> {
-        Promise.all([
-          fetch(`${config.API_ENDPOINT}/api/students`),
-        ])
+        fetch(`${config.API_ENDPOINT}/api/students`)
         .then(res => {
             if (!res.ok)
                 return Promise.reject(res)
             return res.json()
           })
-          .then(([students]) => {
+          .then((students) => {
             setStudents(students)
           })
           .catch(error => {
@@ -40,7 +38,7 @@ export default function App({match}, props) {
 
     // const student = useEffect();
     // console.log("student", student)
-    
+
 
     const handleClickDelete = (e) => {
         /* insert fetch and then for db */
