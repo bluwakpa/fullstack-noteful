@@ -45,6 +45,22 @@ export default function App({match}, props) {
         e.preventDefault()
         const students = props.match.params.id
         console.log("students", students)
+
+        fetch(`${config.API_ENDPOINT}/api/students`, {
+        method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            
+            },
+        })
+        .then(res => {
+            if (!res.ok)
+                return Promise.reject(e)
+            this.context.setStudents(students)
+        })
+        .catch(error => {
+            console.error({ error })
+        })
     };
 
     const value = {
