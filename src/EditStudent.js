@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
 import { Link } from 'react-router-dom';
 // import data from './data';
+import config from './config';
 
 export default function EditStudent(props) {
     console.log(props)
@@ -10,11 +11,15 @@ export default function EditStudent(props) {
     const student = context.students.find(student => student.id === Number(props.match.params.id));
     console.log('student', student)
     const studentIndex = context.students.indexOf(student)
+    console.log('studentIndex', studentIndex)
     const [firstName, setFirstName] = useState(student.first_name)
     const [lastName, setLastName] = useState(student.last_name)
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
+    const students = context.students
+    console.log('students', students)
     const setStudents = context.setStudents
+    console.log('context.setStudents', context.setStudents)
 
 
     const onSubmit = (e) => {
@@ -35,7 +40,23 @@ export default function EditStudent(props) {
         const id = props.match.params.id
         let deleted = context.students.filter(student => student.id !== id)
         setStudents(deleted)
+        console.log('setStudents', setStudents, 'deleted', deleted)
         props.history.push(`/attendance`)
+
+        fetch(`${config.API_ENDPOINT}/api/students/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then(res => {
+                if (!res.ok)
+                    return Promise.reject(e)
+                this.context.setStudents(students)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
 

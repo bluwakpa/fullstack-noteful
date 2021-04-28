@@ -12,23 +12,23 @@ import StudentHistory from './StudentHistory';
 import StudentsHistory from './StudentsHistory';
 import config from './config';
 
-export default function App({match}, props) {
+export default function App({ match }, props) {
     const [students, setStudents] = useState([]);
 
-    useEffect(()=> {
+    useEffect(() => {
         fetch(`${config.API_ENDPOINT}/api/students`)
-        .then(res => {
-            if (!res.ok)
-                return Promise.reject(res)
-            return res.json()
-          })
-          .then((students) => {
-            setStudents(students)
-          })
-          .catch(error => {
-            console.error({ error })
-          })
-      },[])
+            .then(res => {
+                if (!res.ok)
+                    return Promise.reject(res)
+                return res.json()
+            })
+            .then((students) => {
+                setStudents(students)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
+    }, [])
 
     // const result = await axios.get()
 
@@ -47,20 +47,19 @@ export default function App({match}, props) {
         console.log("students", students)
 
         fetch(`${config.API_ENDPOINT}/api/students`, {
-        method: 'DELETE',
+            method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
-            
             },
         })
-        .then(res => {
-            if (!res.ok)
-                return Promise.reject(e)
-            this.context.setStudents(students)
-        })
-        .catch(error => {
-            console.error({ error })
-        })
+            .then(res => {
+                if (!res.ok)
+                    return Promise.reject(e)
+                this.context.setStudents(students)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     };
 
     const value = {
