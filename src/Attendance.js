@@ -1,24 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
+import config from './config';
 
 export default function Attendance(props) {
     const [students, setStudents] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios(
-                // 'https://present-capstone.herokuapp.com',
-                'http://localhost:8000/api/students',
-            );
-            setStudents(result.data);
-            console.log('result.data', result.data)
-        };
-        fetchData();
-    }, []);
+    const init = {
+        firstName: "",
+        lastName: "",
+    }
+    const [formData, setFormData] = useState(init);
 
     const context = useContext(ApiContext);
     console.log('context', context)
@@ -34,12 +27,41 @@ export default function Attendance(props) {
         initialCheck[student.id] = student.attendance.Today
     })
 
-    const updateStudents = (newStudent) => {
+    const updateStudents = e => {
         /* insert fetch and then for db */
-        const index = context.students.indexOf(newStudent)
-        context.students[index] = newStudent
-        context.setStudents([...context.students])
-        props.history.push(`/students-history`)
+        e.preventDefault()
+        const newStudent = {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            modified: new Date(),
+            // id: uuidv4(),
+            attendance: {
+                "Today": false,
+                "Yesterday": false
+            }
+        }
+        fetch(`${config.API_ENDPOINT}/api/students`, {
+            mode: 'cors',
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newStudent),
+        })
+            .then(res => {
+                if (!res.ok)
+                    return Promise.reject(res)
+                return res.json()
+            })
+            .then(newStudent => {
+                const index = context.students.indexOf(newStudent)
+                context.students[index] = newStudent
+                context.setStudents([...context.students, newStudent])
+                props.history.push(`/students-history`)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
     const handleSubmit = (e) => {

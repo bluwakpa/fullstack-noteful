@@ -28,12 +28,12 @@ export default function AddStudent(props) {
         const newStudent = {
             first_name: formData.firstName,
             last_name: formData.lastName,
-            // modified: new Date(),
+            modified: new Date(),
             // id: uuidv4(),
-            // attendance: {
-            //     "Today": false,
-            //     "Yesterday": false
-            // }
+            attendance: {
+                "Today": false,
+                "Yesterday": false
+            }
         }
         fetch(`${config.API_ENDPOINT}/api/students`, {
             mode: 'cors',
@@ -50,7 +50,7 @@ export default function AddStudent(props) {
             })
             .then(newStudent => {
                 context.setStudents([...context.students, newStudent])
-                props.history.push(`/attendance/${formData.period}`)
+                props.history.push(`/attendance`)
             })
             .catch(error => {
                 console.error({ error })

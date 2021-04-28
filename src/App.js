@@ -13,22 +13,7 @@ import StudentsHistory from './StudentsHistory';
 import config from './config';
 
 export default function App({match}, props) {
-    // const [students, setStudents] = useState(data.students);
     const [students, setStudents] = useState([]);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await axios(
-    //             // 'http://localhost:8000/api/students',
-    //             'https://present-capstone.herokuapp.com',
-    //             // 'postgresql://bluwakpa@localhost:5432/present'
-    //         );
-    //         setStudents(result.data);
-    //         console.log('result', result)
-    //         console.log('result.data', result.data)
-    //     };
-    //     fetchData();
-    // }, []);
 
     useEffect(()=> {
         Promise.all([
@@ -36,7 +21,7 @@ export default function App({match}, props) {
         ])
         .then(res => {
             if (!res.ok)
-                return res.json().then(e => Promise.reject(e))
+                return Promise.reject(res)
             return res.json()
           })
           .then(([students]) => {
