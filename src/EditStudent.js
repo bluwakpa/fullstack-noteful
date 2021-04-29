@@ -62,7 +62,8 @@ export default function EditStudent(props) {
                     return Promise.reject(e)
                 const newStudents = [...students]
                 const indexOfDeleted = students.findIndex(student => student.id === studentId)
-                newStudents.splice(indexOfDeleted, 1)
+                const deletedStudent = context.students.update(student => student.id !== studentId)
+                newStudents.splice(indexOfDeleted, deletedStudent, 1)
                 // , newVersionStudent
                 this.context.setStudents(newStudents)
             })
