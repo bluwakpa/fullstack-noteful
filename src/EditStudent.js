@@ -7,7 +7,7 @@ import config from './config';
 export default function EditStudent(props) {
     console.log(props)
     const context = useContext(ApiContext)
-    console.log('context.students', context.students)
+    console.log('context', context, 'context.students', context.students)
     const student = context.students.find(student => student.id === Number(props.match.params.id));
     console.log('student', student)
     const studentIndex = context.students.indexOf(student)
@@ -16,14 +16,22 @@ export default function EditStudent(props) {
     const [lastName, setLastName] = useState(student.last_name)
     const firstNameChange = function (e) { setFirstName(e.target.value) }
     const lastNameChange = function (e) { setLastName(e.target.value) }
-    const students = context.students
+    const [students, setStudents] = useState([]);
+    // const students = context.students
     console.log('students', students)
-    const setStudents = context.setStudents
-    console.log('context.setStudents', context.setStudents)
+    // const setStudents = context.setStudents
+    console.log('setStudents', setStudents)
+    // create hook for context.students that removes deleted student
+    // const deletedStudent = context.students.splice(deleted)
+    // const static = defaultProps ={
+    //     onDeleteNote: () => {},
+    //   }
+    // const static contextType = ApiContext;
+
 
 
     const onSubmit = (e) => {
-        /* insert fetch and then for db */ 
+        /* insert fetch and then for db */
         e.preventDefault()
         console.log('inside handleClickDelete')
         const newStudent = { ...student, first_name: firstName, last_name: lastName }
@@ -37,13 +45,13 @@ export default function EditStudent(props) {
     const handleClickDelete = (e) => {
         /* insert fetch and then for db */
         e.preventDefault()
-        const id = props.match.params.id
-        let deleted = context.students.filter(student => student.id !== id)
+        const studentId = Number(props.match.params.id)
+        let deleted = context.students.filter(student => student.id !== studentId)
         setStudents(deleted)
-        console.log('setStudents', setStudents, 'deleted', deleted)
+        console.log('setStudents', setStudents, 'deleted', deleted, 'context.students', context.students)
         props.history.push(`/attendance`)
 
-        fetch(`${config.API_ENDPOINT}/api/students/${id}`, {
+        fetch(`${config.API_ENDPOINT}/api/students/${studentId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -52,12 +60,16 @@ export default function EditStudent(props) {
             .then(res => {
                 if (!res.ok)
                     return Promise.reject(e)
-                this.context.setStudents(students)
+                const newStudents = [...students]
+                const indexOfDeleted = students.findIndex(student => student.id === studentId)
+                newStudents.splice(indexOfDeleted, 1)
+                // , newVersionStudent
+                this.context.setStudents(newStudents)
             })
             .catch(error => {
                 console.error({ error })
             })
-    }
+    };
 
 
     return (

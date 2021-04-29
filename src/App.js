@@ -43,8 +43,8 @@ export default function App({ match }, props) {
     const handleClickDelete = (e) => {
         /* insert fetch and then for db */
         e.preventDefault()
-        const students = props.match.params.id
-        console.log("students", students)
+        const studentId = Number(props.match.params.id)
+        console.log("students", studentId)
 
         fetch(`${config.API_ENDPOINT}/api/students`, {
             method: 'DELETE',
@@ -55,7 +55,11 @@ export default function App({ match }, props) {
             .then(res => {
                 if (!res.ok)
                     return Promise.reject(e)
-                this.context.setStudents(students)
+                const newStudents = [...students]
+                const indexOfDeleted = students.findIndex(student => student.id === studentId)
+                newStudents.splice(indexOfDeleted, 1)
+                // , newVersionStudent
+                this.context.setStudents(newStudents)
             })
             .catch(error => {
                 console.error({ error })

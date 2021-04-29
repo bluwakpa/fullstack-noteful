@@ -20,7 +20,6 @@ export default function Attendance(props) {
     // const [students, setStudents] = useState(context.students);
     console.log('students', students)
     const student = context.students.find(student => student.id === Number(props.match.params.id));
-    console.log('props.match.params.id', props.match.params.id, 'student', student)
 
     context.students.forEach(student => {
         console.log('context.students', context.students, 'student', student)
@@ -75,11 +74,6 @@ export default function Attendance(props) {
         console.log('updatedStudents', updatedStudents)
         props.history.push(`/students-history`)
     }
-
-    console.log('context.students', context.students)
-    console.log('checked', checked)
-
-    
 
 
     return (
