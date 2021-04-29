@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import data from './data';
 import { Route, Link } from 'react-router-dom';
 import './index.css';
 import Attendance from './Attendance';
@@ -29,16 +27,6 @@ export default function App({ match }, props) {
                 console.error({ error })
             })
     }, [])
-
-    // const result = await axios.get()
-
-    // const context = useContext(ApiContext);
-    // const student = context.students.find(student => student.id === id);
-    // console.log('student', student)
-
-    // const student = useEffect();
-    // console.log("student", student)
-
 
     const handleClickDelete = (e) => {
         /* insert fetch and then for db */

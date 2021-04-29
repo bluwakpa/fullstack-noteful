@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import data from './data';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
 import config from './config';
@@ -17,7 +16,6 @@ export default function Attendance(props) {
     console.log('context', context)
     const initialCheck = {};
     const [checked, setChecked] = useState(initialCheck);
-    // const [students, setStudents] = useState(context.students);
     console.log('students', students)
     const student = context.students.find(student => student.id === Number(props.match.params.id));
 
@@ -33,7 +31,6 @@ export default function Attendance(props) {
             first_name: formData.firstName,
             last_name: formData.lastName,
             modified: new Date(),
-            // id: uuidv4(),
             attendance: {
                 "Today": false,
                 "Yesterday": false
