@@ -72,6 +72,7 @@ export default function EditStudent(props) {
 
                     <button
                         type='submit'
+                        class="button"
                     > Update </button>
 
                     {/* delete student from class
@@ -82,6 +83,7 @@ export default function EditStudent(props) {
                     <button
                         className='Student__delete'
                         type='button'
+                        class="button"
                         onClick={handleClickDelete}
                     > Delete </button>
 
@@ -89,7 +91,7 @@ export default function EditStudent(props) {
                     send user to student history */}
 
                     <Link to={`/student-history/${student.id}`}>
-                        <button type='submit'> View </button>
+                        <button type='submit' class="button"> View </button>
                     </Link>
                 </section>
             </form>

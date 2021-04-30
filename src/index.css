@@ -9,12 +9,15 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 
-nav,
 footer {
-  padding: 1% 0;
+  bottom: 0;
+  position: fixed;
   background-color: #aaa;
+  width: 100%;
 }
 
 nav {
@@ -23,20 +26,25 @@ nav {
   left: 0;
   right: 0;
   z-index: 10;
+  padding: 1% 0;
+  background-color: #aaa;
 }
 
 header {
-  padding: 12% 0;
+  padding: 20% 0 0 0;
 }
 
 section {
   min-height: 200px;
   padding: 6% 0;
-  background-color: #bbb;
 }
 
-section:nth-child(even) {
+/* section:nth-child(even) {
   background-color: #ddd;
+} */
+
+.button {
+  padding: 1rem;
 }
 
 .navbar {

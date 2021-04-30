@@ -97,7 +97,7 @@ export default function Attendance(props) {
                 {/* submit the attendance to student data */}
 
                 <section className="button-section">
-                    <button type="submit">Submit</button>
+                    <button type="submit" class="button">Submit</button>
                     <br />
                     <Link to="/add-student"><button>+ Student </button></Link>
                 </section>

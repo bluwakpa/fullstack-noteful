@@ -36,7 +36,7 @@ export default function StudentHistory({ match }) {
                 </div>
             </header>
             <section className="button-section">
-                <Link to="/attendance"><button> Attendance </button></Link>
+                <Link to="/attendance"><button class="button"> Attendance </button></Link>
             </section>
 
         </main>
