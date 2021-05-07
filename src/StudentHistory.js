@@ -28,8 +28,7 @@ export default function StudentHistory({ match }) {
                     {
                         Object.entries(student.attendance).map(([date, present]) => (
                             <div>
-                                <p>{date}</p>
-                                <p>{present ? "Present" : "Absent"}</p>
+                                <p>{date}: {present ? "Present" : "Absent"}</p>
                             </div>
                         ))
                     }

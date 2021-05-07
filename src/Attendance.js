@@ -76,30 +76,31 @@ export default function Attendance(props) {
     return (
         <main role="main">
             <header>
-                <h2>Student Attendance</h2>
+                <h2>Student Attendance<br /><Link to="/add-student"><button class="circle">&#43;</button></Link></h2>
+
             </header>
             <article className="form-section">
                 {/* <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label> */}
             </article>
-            <form onSubmit={handleSubmit}>
-                {/* student names Link to EditStudent 
+            <form className="form-box" onSubmit={handleSubmit}>
+                <div className="ul-text">
+                    {/* student names Link to EditStudent 
                     check attendance by clicking name
                     hover and focus
                     add class to show its selected
                     add pencil to left of name to edit student
                     accessibility by altering setCheck w CSS to view as button*/}
-                {
-                    context.students.map((student) => {
-                        return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked(
-                            { ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
-                    })
-                }
-                {/* submit the attendance to student data */}
-
+                    {
+                        context.students.map((student) => {
+                            return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked(
+                                { ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
+                        })
+                    }
+                    {/* submit the attendance to student data */}
+                </div>
                 <section className="button-section">
-                    <button type="submit" class="button">Submit</button>
+                    <button type="submit" className="button">Submit</button>
                     <br />
-                    <Link to="/add-student"><button>+ Student </button></Link>
                 </section>
             </form>
         </main>

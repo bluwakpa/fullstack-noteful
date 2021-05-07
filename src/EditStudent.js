@@ -58,12 +58,12 @@ export default function EditStudent(props) {
                 </header>
                 <div>
                     {/* Text box defaults as students information based on id */}
-                    <label for="first-name">First name</label>
-                    <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} type="text" name='first-name' id='first-name' />
+                    {/* <label for="first-name">First name</label> */}
+                    <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
                 </div>
                 <div>
-                    <label for="last-name">Last name</label>
-                    <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} type="text" name='last-name' id='last-name' />
+                    {/* <label for="last-name">Last name</label> */}
+                    <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
                 </div>
                 <section>
                     {/* submit changes to student data

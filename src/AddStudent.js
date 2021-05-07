@@ -65,15 +65,13 @@ export default function AddStudent(props) {
                     <h2>Add Student</h2>
                 </header>
                 <div>
-                    <label htmlFor="first-name">First name</label>
-                    <input required='' type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange} />
+                    <input required='' className="input" type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange} />
                 </div>
                 <div>
-                    <label htmlFor="last-name">Last name</label>
-                    <input required='' type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
+                    <input required='' className="input" type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
                     <section className="button-section">
-                        <button type='submit' >Submit</button>
-                        <Link to="/attendance"><button> Cancel </button></Link>
+                        <button type='submit' class="button">Submit</button>
+                        <Link to="/attendance"><button class="button"> Cancel </button></Link>
                     </section>
                 </div>
             </form>

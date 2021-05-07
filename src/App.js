@@ -64,7 +64,7 @@ export default function App({ match }, props) {
     return (
         <ApiContext.Provider value={value}>
             <div>
-                <nav role="navigation">
+                <nav role="navigation" class="nav">
                     <Link to="/"><h1>Present</h1></Link>
                 </nav>
 
@@ -76,7 +76,7 @@ export default function App({ match }, props) {
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
             </div>
-            <footer role="contentinfo">Copyright 2021</footer>
+            <footer role="contentinfo" class="footer">Copyright 2021</footer>
         </ApiContext.Provider>
     );
 }
