@@ -76,7 +76,7 @@ export default function App({ match }, props) {
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
             </div>
-            <footer role="contentinfo" class="footer">Copyright 2021</footer>
+            <footer role="contentinfo" className="footer">Copyright 2021</footer>
         </ApiContext.Provider>
     );
 }
