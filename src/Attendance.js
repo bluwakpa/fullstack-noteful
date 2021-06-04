@@ -11,21 +11,15 @@ export default function Attendance(props) {
         lastName: "",
     }
     const [formData, setFormData] = useState(init);
-
     const context = useContext(ApiContext);
-    console.log('context', context)
     const initialCheck = {};
     const [checked, setChecked] = useState(initialCheck);
-    console.log('students', students)
     const student = context.students.find(student => student.id === Number(props.match.params.id));
-
     context.students.forEach(student => {
-        console.log('context.students', context.students, 'student', student)
         initialCheck[student.id] = student.attendance.Today
     })
 
     const updateStudents = e => {
-        /* insert fetch and then for db */
         e.preventDefault()
         const newStudent = {
             first_name: formData.firstName,
@@ -36,6 +30,7 @@ export default function Attendance(props) {
                 "Yesterday": false
             }
         }
+
         fetch(`${config.API_ENDPOINT}/api/students`, {
             mode: 'cors',
             method: 'POST',
@@ -61,26 +56,46 @@ export default function Attendance(props) {
     }
 
     const handleSubmit = (e) => {
-        /* insert fetch and then for db */
         e.preventDefault()
         const updatedStudents = context.students.map(student => {
             student.attendance["Today"] = checked[student.id] || false
             return student
         })
         context.setStudents(updatedStudents)
-        console.log('updatedStudents', updatedStudents)
-        props.history.push(`/students-history`)
+        Promise.all(updatedStudents.map(student =>
+            fetch(`${config.API_ENDPOINT}/api/students/${student.id}`, {
+                mode: 'cors',
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(student),
+            })
+                .then(res => {
+                    if (!res.ok)
+                        return res.json().then(e => Promise.reject(e))
+                    return res.json()
+                })
+                .then(updatedStudents => {
+                    const studentsNotUpdated = context.students.filter(student =>
+                        student.id !== updatedStudent.id
+                    );
+                    context.setStudents([...studentsNotUpdated, updatedStudents])
+                })
+                .catch(error => {
+                    console.error({ error })
+                })))
+                .then(() => props.history.push(`/students-history`))
     }
 
 
     return (
         <main role="main">
             <header>
-                <h2>Student Attendance<br /><Link to="/add-student"><button class="circle">&#43;</button></Link></h2>
+                <h2>Student Attendance<br /><Link to="/add-student"><button className="circle">&#43;</button></Link></h2>
 
             </header>
             <article className="form-section">
-                {/* <label className="dream-date-label" htmlFor="date-month">Date: {data.date} </label> */}
             </article>
             <form className="form-box" onSubmit={handleSubmit}>
                 <div className="ul-text">
@@ -88,15 +103,13 @@ export default function Attendance(props) {
                     check attendance by clicking name
                     hover and focus
                     add class to show its selected
-                    add pencil to left of name to edit student
                     accessibility by altering setCheck w CSS to view as button*/}
                     {
                         context.students.map((student) => {
-                            return <StudentAttendance checked={checked[student.id]} setChecked={(isChecked) => setChecked(
+                            return <StudentAttendance key={student.id} checked={checked[student.id]} setChecked={(isChecked) => setChecked(
                                 { ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
                         })
                     }
-                    {/* submit the attendance to student data */}
                 </div>
                 <section className="button-section">
                     <button type="submit" className="button">Submit</button>

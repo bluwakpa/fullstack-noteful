@@ -11,7 +11,7 @@ export default function App() {
                     <p> Take attendance of your classroom and edit student profiles. </p>
                 </header>
                 <section className="button-section">
-                    <Link to="/attendance"><button class="button"> Start </button></Link>
+                    <Link to="/attendance"><button className="button"> Start </button></Link>
                 </section>
             </div>
     );

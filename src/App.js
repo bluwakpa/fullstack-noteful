@@ -29,10 +29,8 @@ export default function App({ match }, props) {
     }, [])
 
     const handleClickDelete = (e) => {
-        /* insert fetch and then for db */
         e.preventDefault()
         const studentId = Number(props.match.params.id)
-        console.log("students", studentId)
 
         fetch(`${config.API_ENDPOINT}/api/students`, {
             method: 'DELETE',
@@ -46,7 +44,6 @@ export default function App({ match }, props) {
                 const newStudents = [...students]
                 const indexOfDeleted = students.findIndex(student => student.id === studentId)
                 newStudents.splice(indexOfDeleted, 1)
-                // , newVersionStudent
                 this.context.setStudents(newStudents)
             })
             .catch(error => {
@@ -64,7 +61,7 @@ export default function App({ match }, props) {
     return (
         <ApiContext.Provider value={value}>
             <div>
-                <nav role="navigation" class="nav">
+                <nav role="navigation" className="nav">
                     <Link to="/"><h1>Present</h1></Link>
                 </nav>
 
@@ -76,7 +73,14 @@ export default function App({ match }, props) {
                 <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
 
             </div>
-            <footer role="contentinfo" className="footer">Copyright 2021</footer>
+            <footer role="contentinfo" className="footer">
+            <h1 className="h3">Present</h1>
+        <div className="copyright">Copyright 2021</div>
+          <br />
+          FAQs |
+          Need Help? |
+          Contact Us
+        </footer>
         </ApiContext.Provider>
     );
 }

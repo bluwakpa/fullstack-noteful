@@ -14,15 +14,36 @@ export default function EditStudent(props) {
     const [students, setStudents] = useState([]);
 
     const onSubmit = (e) => {
-        /* insert fetch and then for db */
         e.preventDefault()
-        console.log('inside handleClickDelete')
-        const newStudent = { ...student, first_name: firstName, last_name: lastName }
+        const updatedStudent = { ...student, first_name: firstName, last_name: lastName }
         const newStudents = [...context.students]
-        newStudents[studentIndex] = newStudent
-        console.log('newStudent', newStudent)
-        setStudents(newStudents)
-        props.history.push(`/attendance`)
+        newStudents[studentIndex] = updatedStudent
+        context.setStudents(newStudents)
+
+        fetch(`${config.API_ENDPOINT}/api/students/${student.id}`, {
+            mode: 'cors',
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedStudent),
+        })
+            .then(res => {
+                if (!res.ok)
+                    return res.json().then(e => Promise.reject(e))
+                return res.json()
+            })
+            .then(updatedStudent => {
+                const studentsNotUpdated = context.students.filter(student =>
+                    student.id !== updatedStudent.id
+                    );
+                context.setStudents([...studentsNotUpdated, updatedStudent])
+
+                props.history.push(`/attendance`)
+            })
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
     const handleClickDelete = (e) => {
@@ -30,9 +51,8 @@ export default function EditStudent(props) {
         const studentId = Number(props.match.params.id)
         let deleted = context.students.filter(student => student.id !== studentId)
         setStudents(deleted)
-
-        /* fetch from the db */
-        fetch(`${config.API_ENDPOINT}/api/students/${studentId}`, {
+        
+        fetch(`${config.API_ENDPOINT}/api/students/${student.id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -54,15 +74,11 @@ export default function EditStudent(props) {
             <form className='signup-form' onSubmit={onSubmit} >
                 <header role="banner">
                     <h2>Edit Student</h2>
-                    {/* student ID to ensure not deleting wrong student */}
                 </header>
                 <div>
-                    {/* Text box defaults as students information based on id */}
-                    {/* <label for="first-name">First name</label> */}
                     <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
                 </div>
                 <div>
-                    {/* <label for="last-name">Last name</label> */}
                     <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
                 </div>
                 <section>
@@ -72,7 +88,7 @@ export default function EditStudent(props) {
 
                     <button
                         type='submit'
-                        class="button"
+                        className="button"
                     > Update </button>
 
                     {/* delete student from class
@@ -81,17 +97,13 @@ export default function EditStudent(props) {
                     yes will send user to addPeriod */}
 
                     <button
-                        className='Student__delete'
                         type='button'
-                        class="button"
+                        className="button"
                         onClick={handleClickDelete}
                     > Delete </button>
 
-                    {/* view filtered student attendance history
-                    send user to student history */}
-
                     <Link to={`/student-history/${student.id}`}>
-                        <button type='submit' class="button"> View </button>
+                        <button type='submit' className="button"> View </button>
                     </Link>
                 </section>
             </form>

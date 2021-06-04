@@ -4,17 +4,11 @@ import { Link } from 'react-router-dom'
 
 export default function StudentHistory({ match }) {
     const context = useContext(ApiContext);
-    console.log('match.params.id', match.params.id)
     const student = context.students.find(student => student.id === Number(match.params.id));
-    // console.log('student.attendance', student.attendance)
-    // const students = context.students;
-    console.log('student', student)
-
     const listItems = context.students.map((student) =>
         <StudentHistory key={student.toString()}
             value={student} />
     );
-    console.log('listItems', listItems)
 
 
     return (
@@ -35,9 +29,8 @@ export default function StudentHistory({ match }) {
                 </div>
             </header>
             <section className="button-section">
-                <Link to="/attendance"><button class="button"> Attendance </button></Link>
+                <Link to="/attendance"><button className="button"> Attendance </button></Link>
             </section>
-
         </main>
     );
 }

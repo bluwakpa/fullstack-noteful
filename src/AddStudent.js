@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
-// import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import config from './config';
 
@@ -15,7 +14,6 @@ export default function AddStudent(props) {
     const [formData, setFormData] = useState(init)
 
     const handleChange = (e) => {
-        /* insert fetch and then for db */
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -23,18 +21,17 @@ export default function AddStudent(props) {
     }
 
     const onSubmit = (e) => {
-        /* insert fetch and then for db */
         e.preventDefault()
         const newStudent = {
             first_name: formData.firstName,
             last_name: formData.lastName,
             modified: new Date(),
-            // id: uuidv4(),
             attendance: {
                 "Today": false,
                 "Yesterday": false
             }
         }
+        
         fetch(`${config.API_ENDPOINT}/api/students`, {
             mode: 'cors',
             method: 'POST',
@@ -70,8 +67,8 @@ export default function AddStudent(props) {
                 <div>
                     <input required='' className="input" type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
                     <section className="button-section">
-                        <button type='submit' class="button">Submit</button>
-                        <Link to="/attendance"><button class="button"> Cancel </button></Link>
+                    <p><button type='submit' className="button">Submit</button></p>
+                    <p><Link to="/attendance"><button className="button-cancel"> Cancel </button></Link></p>
                     </section>
                 </div>
             </form>
