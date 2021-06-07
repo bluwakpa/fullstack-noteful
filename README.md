@@ -9,9 +9,11 @@ Take attendance of your classroom, add students, edit student profiles, and view
 ## Running the project locally
 Live version: https://present-client-bluwakpa.vercel.app/
 
+Repository: https://github.com/bluwakpa/present-client
+
 1. Clone the project locally
-2. Run npm install
-3. Run npm run dev
+2. Install dependancies `npm install`
+3. Start the application `npm start`
 
 ## Tech Stack
 React
