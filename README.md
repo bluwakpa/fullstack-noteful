@@ -4,24 +4,20 @@
 This app was built for teachers to track their student attendance.
 
 ## Features
-Take attendance of your classroom, edit student profiles, and view student and classroom attendance history.
+Take attendance of your classroom, add students, edit student profiles, and view student and classroom attendance history.
 
 ## Running the project locally
-Live version:
+Live version: https://present-client-bluwakpa.vercel.app/
 
 1. Clone the project locally
 2. Run npm install
 3. Run npm run dev
 
-## Dev Dependencies
+## Tech Stack
 React
-React-DOM
-Cors
-UUID
-ESLint
-Prettier
-Babel
-Webpack
+Node
+Express
+PostgreSQL
 
 ## Features Todo
 1. Delete Student Confirmation
