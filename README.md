@@ -26,3 +26,13 @@ PostgreSQL
 2. Edit Student Button Redesign
 3. Button Hover Features
 4. Students in Alphabetical Order
+
+## Screenshots
+
+Click to view.
+
+[![Home](https://github.com/bluwakpa/present-client/img/present-home.png)](https://github.com/bluwakpa/present-client/img/present-home.png)
+[![Attendance](https://github.com/bluwakpa/present-client/img/task-attendance.png)](https://github.com/bluwakpa/present-client/img/task-attendance.png)
+[![Add](https://github.com/bluwakpa/present-client/img/present-add.png)](https://github.com/bluwakpa/present-client/img/present-add.png)
+[![Edit](https://github.com/bluwakpa/present-client/img/task-edit.png)](https://github.com/bluwakpa/present-client/img/task-edit.png)
+[![History](https://github.com/bluwakpa/present-client/img/task-history.png)](https://github.com/bluwakpa/present-client/img/task-history.png)
