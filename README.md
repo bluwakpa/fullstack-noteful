@@ -9,7 +9,7 @@ Take attendance of your classroom, add students, edit student profiles, and view
 ## Running the project locally
 Live version: https://present-client-bluwakpa.vercel.app/
 
-Repository: https://github.com/bluwakpa/present-client
+Repository:
 
 1. Clone the project locally
 2. Install dependancies `npm install`
@@ -29,10 +29,9 @@ PostgreSQL
 
 ## Screenshots
 
-Click to view.
-
-[![Home](https://github.com/bluwakpa/present-client/img/present-home.png)](https://github.com/bluwakpa/present-client/img/present-home.png)
-[![Attendance](https://github.com/bluwakpa/present-client/img/task-attendance.png)](https://github.com/bluwakpa/present-client/img/task-attendance.png)
-[![Add](https://github.com/bluwakpa/present-client/img/present-add.png)](https://github.com/bluwakpa/present-client/img/present-add.png)
-[![Edit](https://github.com/bluwakpa/present-client/img/task-edit.png)](https://github.com/bluwakpa/present-client/img/task-edit.png)
-[![History](https://github.com/bluwakpa/present-client/img/task-history.png)](https://github.com/bluwakpa/present-client/img/task-history.png)
+<img src="img/present-home.png" width=30% height=30%>
+<img src="img/present-attendance.png" width=30% height=30%>
+<img src="img/present-add.png" width=30% height=30%>
+<img src="img/present-edit.png" width=30% height=30%>
+<img src="img/present-history.png" width=30% height=30%>
+<img src="img/present-histories.png" width=30% height=30%>
