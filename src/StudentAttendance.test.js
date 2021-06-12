@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import StudentAttendance from './StudentAttendance';
 
 test('renders learn react link', () => {
   render(<BrowserRouter>
-    <App />
+    <StudentAttendance />
   </BrowserRouter>);
 });

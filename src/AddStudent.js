@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import config from './config';
 
 export default function AddStudent(props) {
@@ -31,7 +31,7 @@ export default function AddStudent(props) {
                 "Yesterday": false
             }
         }
-        
+
         fetch(`${config.API_ENDPOINT}/api/students`, {
             mode: 'cors',
             method: 'POST',
@@ -56,22 +56,24 @@ export default function AddStudent(props) {
 
 
     return (
-        <main role="main">
-            <form className='signup-form' onSubmit={onSubmit}>
-                <header role="banner">
-                    <h2>Add Student</h2>
-                </header>
-                <div>
-                    <input required='' className="input" type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange} />
-                </div>
-                <div>
-                    <input required='' className="input" type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
-                    <section className="button-section">
-                    <p><button type='submit' className="button">Submit</button></p>
-                    <p><Link to="/attendance"><button className="button-cancel"> Cancel </button></Link></p>
-                    </section>
-                </div>
-            </form>
-        </main>
+      
+            <main role="main">
+                <form className='signup-form' onSubmit={onSubmit}>
+                    <header role="banner">
+                        <h2>Add Student</h2>
+                    </header>
+                    <div>
+                        <input required='' className="input" type="text" placeholder='First Name' name='firstName' id='first-name' value={formData.firstName} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <input required='' className="input" type="text" placeholder='Last Name' name='lastName' id='last-name' value={formData.lastName} onChange={handleChange} />
+                        <section className="button-section">
+                            <p><button type='submit' className="button">Submit</button></p>
+                            <p><Link to="/attendance"><button className="button-cancel"> Cancel </button></Link></p>
+                        </section>
+                    </div>
+                </form>
+            </main>
+     
     );
 }

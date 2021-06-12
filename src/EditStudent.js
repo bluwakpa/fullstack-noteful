@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import ApiContext from './ApiContext';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import config from './config';
 
 export default function EditStudent(props) {
@@ -36,7 +36,7 @@ export default function EditStudent(props) {
             .then(updatedStudent => {
                 const studentsNotUpdated = context.students.filter(student =>
                     student.id !== updatedStudent.id
-                    );
+                );
                 context.setStudents([...studentsNotUpdated, updatedStudent])
 
                 props.history.push(`/attendance`)
@@ -51,7 +51,7 @@ export default function EditStudent(props) {
         const studentId = Number(props.match.params.id)
         let deleted = context.students.filter(student => student.id !== studentId)
         setStudents(deleted)
-        
+
         fetch(`${config.API_ENDPOINT}/api/students/${student.id}`, {
             method: 'DELETE',
             headers: {
@@ -70,43 +70,45 @@ export default function EditStudent(props) {
     };
 
     return (
-        <main role="main">
-            <form className='signup-form' onSubmit={onSubmit} >
-                <header role="banner">
-                    <h2>Edit Student</h2>
-                </header>
-                <div>
-                    <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
-                </div>
-                <div>
-                    <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
-                </div>
-                <section>
-                    {/* submit changes to student data
+      
+            <main role="main">
+                <form className='signup-form' onSubmit={onSubmit} >
+                    <header role="banner">
+                        <h2>Edit Student</h2>
+                    </header>
+                    <div>
+                        <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
+                    </div>
+                    <div>
+                        <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
+                    </div>
+                    <section>
+                        {/* submit changes to student data
                     send user to addPeriod
                     message: your student has been updated */}
 
-                    <button
-                        type='submit'
-                        className="button"
-                    > Update </button>
+                        <button
+                            type='submit'
+                            className="button"
+                        > Update </button>
 
-                    {/* delete student from class
+                        {/* delete student from class
                     alert user
                     confirm delete: yes/no
                     yes will send user to addPeriod */}
 
-                    <button
-                        type='button'
-                        className="button"
-                        onClick={handleClickDelete}
-                    > Delete </button>
+                        <button
+                            type='button'
+                            className="button"
+                            onClick={handleClickDelete}
+                        > Delete </button>
 
-                    <Link to={`/student-history/${student.id}`}>
-                        <button type='submit' className="button"> View </button>
-                    </Link>
-                </section>
-            </form>
-        </main>
+                        <Link to={`/student-history/${student.id}`}>
+                            <button type='submit' className="button"> View </button>
+                        </Link>
+                    </section>
+                </form>
+            </main>
+      
     );
 }

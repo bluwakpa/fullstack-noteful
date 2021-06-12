@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import ApiContext from './ApiContext';
 import StudentAttendance from './StudentAttendance'
 import config from './config';
@@ -76,7 +76,7 @@ export default function Attendance(props) {
                         return res.json().then(e => Promise.reject(e))
                     return res.json()
                 })
-                .then(updatedStudents => {
+                .then(updatedStudent => {
                     const studentsNotUpdated = context.students.filter(student =>
                         student.id !== updatedStudent.id
                     );
@@ -85,37 +85,45 @@ export default function Attendance(props) {
                 .catch(error => {
                     console.error({ error })
                 })))
-                .then(() => props.history.push(`/students-history`))
+            .then(() => props.history.push(`/students-history`))
     }
 
+    const sortedStudents = context.students.sort((a, b) => a.last_name < b.last_name ? -1 : 1)
 
     return (
-        <main role="main">
-            <header>
-                <h2>Student Attendance<br /><Link to="/add-student"><button className="circle">&#43;</button></Link></h2>
+     
+            <main role="main">
+                <header>
+                    <h2>Student Attendance<br /><Link to="/add-student"><button className="circle">&#43;</button></Link></h2>
 
-            </header>
-            <article className="form-section">
-            </article>
-            <form className="form-box" onSubmit={handleSubmit}>
-                <div className="ul-text">
-                    {/* student names Link to EditStudent 
+                </header>
+                <article className="form-section">
+                </article>
+                <form className="form-box" onSubmit={handleSubmit}>
+                    <div className="ul-text">
+                        {/* student names Link to EditStudent 
                     check attendance by clicking name
                     hover and focus
                     add class to show its selected
                     accessibility by altering setCheck w CSS to view as button*/}
-                    {
-                        context.students.map((student) => {
-                            return <StudentAttendance key={student.id} checked={checked[student.id]} setChecked={(isChecked) => setChecked(
-                                { ...checked, [student.id]: isChecked })} student={student} updateStudents={updateStudents} />
-                        })
-                    }
-                </div>
-                <section className="button-section">
-                    <button type="submit" className="button">Submit</button>
-                    <br />
-                </section>
-            </form>
-        </main>
+                        {
+                            sortedStudents.map((student) => {
+                                return <StudentAttendance 
+                                key={student.id} 
+                                checked={checked[student.id]} 
+                                setChecked={(isChecked) => setChecked(
+                                    { ...checked, [student.id]: isChecked })} 
+                                student={student} 
+                                updateStudents={updateStudents} />
+                            })
+                        }
+                    </div>
+                    <section className="button-section">
+                        <button type="submit" className="button">Submit</button>
+                        <br />
+                    </section>
+                </form>
+            </main>
+     
     );
 }
