@@ -3,7 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from './Home';
 
 test('renders learn react link', () => {
-  render(<BrowserRouter>
+  render(
+  <BrowserRouter>
     <Home />
   </BrowserRouter>);
 });

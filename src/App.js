@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import './index.css';
 import Attendance from './Attendance';
 import AddStudent from './AddStudent';
@@ -10,7 +10,7 @@ import StudentHistory from './StudentHistory';
 import StudentsHistory from './StudentsHistory';
 import config from './config';
 
-export default function App({ match }, props) {
+export default function App(props) {
     const [students, setStudents] = useState([]);
 
     useEffect(() => {
@@ -59,30 +59,31 @@ export default function App({ match }, props) {
 
 
     return (
-       
-            <ApiContext.Provider value={value}>
-                <div>
-                    <nav role="navigation" className="nav">
-                        <Link to="/"><h1>Present</h1></Link>
-                    </nav>
+        <ApiContext.Provider value={value}>
+            <div>
+                <nav role="navigation" className="nav">
+                    <Link to="/">
+                        <h1>Present</h1>
+                    </Link>
+                </nav>
 
-                    <Route exact path="/" component={Home} />
-                    <Route path="/attendance" component={Attendance} />
-                    <Route path="/add-student" component={AddStudent} />
-                    <Route path="/student-history/:id" component={StudentHistory} />
-                    <Route path="/students-history" component={StudentsHistory} />
-                    <Route path="/edit-student/:id" render={(props) => <EditStudent {...props} title={`Props through render`} />} />
+                <Route exact path="/" component={Home} />
+                <Route path="/attendance" component={Attendance} />
+                <Route path="/add-student" component={AddStudent} />
+                <Route path="/student-history/:id" component={StudentHistory} />
+                <Route path="/students-history" component={StudentsHistory} />
+                <Route path="/edit-student/:id" render={(props) =>
+                    <EditStudent {...props} title={`Props through render`} />} />
 
-                </div>
-                <footer role="contentinfo" className="footer">
-                    <h1 className="h3">Present</h1>
-                    <div className="copyright">Copyright 2021</div>
-                    <br />
+            </div>
+            <footer role="contentinfo" className="footer">
+                <h1 className="h3">Present</h1>
+                <div className="copyright">Copyright 2021</div>
+                <br />
                     FAQs |
                     Need Help? |
                     Contact Us
-                </footer>
-            </ApiContext.Provider>
-     
+            </footer>
+        </ApiContext.Provider>
     );
 }
