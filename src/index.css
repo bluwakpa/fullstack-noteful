@@ -143,6 +143,8 @@ h2 {
 }
 
 .text-left {
+  display: flex;
+  align-items: center;
   text-align: left;
   line-height: 2.6;
   margin-bottom: 30px;
