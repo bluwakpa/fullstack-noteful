@@ -23,7 +23,7 @@ nav {
   right: 0;
   z-index: 10;
   padding: 0% 0;
-  background-color: #2d2759;
+  background-color: #1d1943;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
@@ -51,7 +51,7 @@ footer {
   bottom: 0;
   position: fixed;
   padding: 0 0 1% 0;
-  background-color: #2d2759;
+  background-color: #1d1943;
   color:#84B8D9;
   width: 100%;
   left: 0;
