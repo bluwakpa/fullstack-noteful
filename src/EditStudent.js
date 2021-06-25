@@ -77,10 +77,10 @@ export default function EditStudent(props) {
                     <h2>Edit Student</h2>
                 </header>
                 <div>
-                    <input placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
+                    <input required placeholder={student.first_name} onChange={firstNameChange} value={firstName} className="input" type="text" name='first-name' id='first-name' />
                 </div>
                 <div>
-                    <input placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
+                    <input required placeholder={student.last_name} onChange={lastNameChange} value={lastName} className="input" type="text" name='last-name' id='last-name' />
                 </div>
                 <section>
                     {/* submit changes to student data
