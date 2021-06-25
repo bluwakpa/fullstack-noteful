@@ -99,8 +99,8 @@ export default function Attendance(props) {
                     </Link></h2>
 
             </header>
-            <article className="form-section">
-            </article>
+            {/* <article className="form-section">
+            </article> */}
             <form className="form-box" onSubmit={handleSubmit}>
                 <div className="ul-text">
                     {/* student names Link to EditStudent 
